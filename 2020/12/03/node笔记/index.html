@@ -662,7 +662,185 @@ console<span class="token punctuation">.</span><span class="token function">log<
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 </li>
+<li><p>基于原生XMLHttpRequest封装的get方法</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token keyword">get</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> oReq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    oReq<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">callback</span><span class="token punctuation">(</span>oReq<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    oReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'get'</span><span class="token punctuation">,</span> url<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    oReq<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'data.json'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+</li>
 </ul>
+</li>
+<li><p>关系型数据库和非关系型数据库</p>
+<ul>
+<li>即表与表的关系，所有关系型数据库都使用sql语言</li>
+<li>所有的关系型数据库在操作前都需要设计表结构</li>
+<li>数据表支持约束：<ul>
+<li>唯一的</li>
+<li>主键</li>
+<li>默认值</li>
+<li>非空</li>
+</ul>
+</li>
+<li>MongoDB数据库可以任意往里面存数据，没有结构一说 </li>
+</ul>
+</li>
+<li><p>启动和关闭数据库</p>
+<ul>
+<li>启动<code>mongod</code></li>
+<li>连接数据库 <code>mongo</code></li>
+<li>退出数据库<code>exit</code></li>
+</ul>
+</li>
+<li><p>基本命令</p>
+<ul>
+<li><code>show dbs</code>  查看显示所有数据库</li>
+<li><code>use数据库名称</code> 切换到指定的数据（如果没有会新建）</li>
+<li><code>db</code> 查看当前操作的数据库</li>
+<li><code>db.students.insertOne(&#123;&#39;name&#39;:&#39;Jack&#39;&#125;)</code></li>
+<li><code>show collections</code>   当前db的所有集合</li>
+<li><code>db.students.find()</code> </li>
+</ul>
+</li>
+<li><p>在node中如何操作mongodb</p>
+<ul>
+<li><p>mongoDB数据结构</p>
+<ul>
+<li><p>数据库</p>
+</li>
+<li><p>集合</p>
+</li>
+<li><p>文档（文档结构很灵活，没有限制）</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+    <span class="token function">数据库1</span><span class="token punctuation">(</span>不同网站<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">{</span>
+        users<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span>，<span class="token punctuation">{</span><span class="token punctuation">}</span>，xxx<span class="token punctuation">]</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// users集合，集合里面存有文档对象</span>
+        priducts<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span>，<span class="token punctuation">{</span><span class="token punctuation">}</span>，xxx<span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// products集合</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    数据库<span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>使用第三方mongoose来操作mongodb</p>
+<p> 安装： <code>npm i mongoose</code></p>
+<p>helloworld:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> mongoose <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mongoose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mongoose<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token string">'mongodb://localhost:27017/test'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>useNewUrlParser<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> useUnifiedTopology<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Cat <span class="token operator">=</span> mongoose<span class="token punctuation">.</span><span class="token function">model</span><span class="token punctuation">(</span><span class="token string">'Cat'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> String <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> kitty <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'Zildjian'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+kitty<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'meow'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>设计Scheme发布Model</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> mongoose <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mongoose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> Schema <span class="token operator">=</span> mongoose<span class="token punctuation">.</span>Schema<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 1.连接数据库</span>
+mongoose<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token string">'mongodb://localhost/mine'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 2.设计集合结构</span>
+<span class="token comment" spellcheck="true">// 约束的目的就是不要有脏数据</span>
+<span class="token keyword">const</span> userSchema <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+        required<span class="token punctuation">:</span> <span class="token boolean">true</span>  <span class="token comment" spellcheck="true">// 必须有</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    password<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+        required<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    email<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">:</span> String
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 3. 将文档结构发布为模型</span>
+<span class="token comment" spellcheck="true">// 第一个参数： 传入大写名词单数字符串用来表示数据库名称</span>
+<span class="token comment" spellcheck="true">//              mongoose会自动将大写名词的字符串生成小写复数的集合名称</span>
+<span class="token comment" spellcheck="true">// 第二个参数：架构Schema</span>
+<span class="token comment" spellcheck="true">// 返回：模型构造函数</span>
+<span class="token keyword">var</span> user <span class="token operator">=</span> mongoose<span class="token punctuation">.</span><span class="token function">model</span><span class="token punctuation">(</span><span class="token string">'Mine'</span><span class="token punctuation">,</span> userSchema<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 4. 有了模型构造函数之后， 就可以使用这个构造函数对 Users 集合中的数据为所欲为了（增删改查）</span></code></pre>
+</li>
+<li><p><strong>增加数据</strong></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> admin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span> <span class="token string">'admin'</span><span class="token punctuation">,</span>
+    password<span class="token punctuation">:</span> <span class="token string">'123456'</span><span class="token punctuation">,</span>
+    email<span class="token punctuation">:</span> <span class="token string">'admin@admin.com'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+admin<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> ret<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'保存失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'保存成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+</li>
+<li><p><strong>查询数据</strong></p>
+<p>1.查询所有  (输出数组)</p>
+<pre class=" language-javascript"><code class="language-javascript">User<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> ret<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'查询失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>2.按条件查询所有 （输出数组）</p>
+<pre class=" language-javascript"><code class="language-javascript">User<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span> <span class="token string">'张三'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> ret<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'查询失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>3.按条件查询单个 （输出单个对象）</p>
+<pre class=" language-javascript"><code class="language-javascript">User<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span> <span class="token string">'张三'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> ret<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'查询失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+</li>
+<li><p><strong>删除数据</strong></p>
+<pre class=" language-javascript"><code class="language-javascript">User<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span><span class="token string">'张三'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> ret<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"删除成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+</li>
+<li><p><strong>更新数据</strong></p>
+<pre class=" language-javascript"><code class="language-javascript">User<span class="token punctuation">.</span><span class="token function">findByIdAndUpdate</span><span class="token punctuation">(</span><span class="token string">'idxxxxx'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    password<span class="token punctuation">:</span> <span class="token string">'123'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">,</span> ret<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'更新失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'更新成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 </li>
 </ul>
 
