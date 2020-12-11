@@ -539,6 +539,50 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <li><p>IP地址和端口号</p>
 <p>IP地址用来定位计算机，端口号定位到具体的应用程序</p>
 </li>
+<li><p>关于Path模块</p>
+<ul>
+<li>path.basename<ul>
+<li>获取一个路径的文件名（默认包含扩展名）</li>
+</ul>
+</li>
+<li>path.dirname<ul>
+<li>获取一个路径中的目录部分</li>
+</ul>
+</li>
+<li>path.extname<ul>
+<li>获取一个路径中的扩展名部分</li>
+</ul>
+</li>
+<li>path.parse<ul>
+<li>把一个路径转换为对象<ul>
+<li>root根路径</li>
+<li>dir目录</li>
+<li>base包含后缀名的文件名</li>
+<li>ext后缀名</li>
+<li>name不包含后缀名的文件名</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>path.join<ul>
+<li>当你需要进行路径拼接的时候，推荐使用这个方法</li>
+</ul>
+</li>
+<li>path.isAbsolute<ul>
+<li>判断一个路径是否为绝对路径</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Node中的非模块成员</p>
+<p>在每个模块中，除了<code>require</code>、<code>exports</code> 等模块相关API之外，还有两个特殊的成员</p>
+<ul>
+<li>__dirname :可以 <strong>动态获取</strong> 当前文件模块所属目录的绝对路径 </li>
+<li>__filename : 可以 <strong>动态获取</strong> 当前文件的绝对路径</li>
+</ul>
+<p>在文件操作中，使用相对路径是不可靠的，因为在Node中文件的相对路径  ——&gt;  node命令控制台所处路径</p>
+<p>为了解决这个问题，很简单，只要将相对路径转为<strong>__dirname</strong>或者<strong>__filename</strong>即可</p>
+</li>
 </ul>
 <h2 id="第二天学习"><a href="#第二天学习" class="headerlink" title="第二天学习"></a>第二天学习</h2><ul>
 <li><p>第三方模块的加载规则(以art-template为例）</p>
@@ -922,7 +966,7 @@ p1
       <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-</li>
+<h2 id="第六天"><a href="#第六天" class="headerlink" title="第六天"></a>第六天</h2></li>
 </ul>
 
                 
