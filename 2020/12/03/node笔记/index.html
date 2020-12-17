@@ -967,6 +967,21 @@ p1
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h2 id="第六天"><a href="#第六天" class="headerlink" title="第六天"></a>第六天</h2></li>
+<li><p>在express中配置使用   <code>express-session</code>   插件</p>
+<ul>
+<li><p>安装<code>npm install express-session</code></p>
+</li>
+<li><p>配置</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 该插件会为req请求对象添加一个成员：req.session 默认是一个对象</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+secret<span class="token punctuation">:</span> <span class="token string">'keyboard cat'</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// 配置加密字符串，在原有加密基础之上和这个字符串拼起来去加密，增加安全性</span>
+resave<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+saveUninitialized<span class="token punctuation">:</span> <span class="token boolean">true</span>  <span class="token comment" spellcheck="true">// 无论是否使用session，都默认直接给你分配一把钥匙</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+</li>
+</ul>
+<p>提示：默认session数据是内存存储的，服务器一旦重启数据就会丢失 ，真正的生产环境会把Session做持久化处理。</p>
+</li>
 </ul>
 
                 
