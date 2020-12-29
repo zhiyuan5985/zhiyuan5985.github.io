@@ -545,17 +545,46 @@
    prependData<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`@import "./src/styles/main.scss";`</span></span>
  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
-<p>3）配置ElementUI</p>
+<p>3）配置ElementUI +（参考ElementUI+官网 <a target="_blank" rel="noopener" href="https://element-plus.gitee.io/#/zh-CN/component/quickstart%EF%BC%89">https://element-plus.gitee.io/#/zh-CN/component/quickstart）</a></p>
 <ul>
-<li>安装  <code>npm i element-ui -S</code></li>
-<li>配置 ElementUI</li>
+<li>安装  <code>npm install element-plus --save</code></li>
+<li>配置 ElementUI+  （注：VUE3.0与ElementPlus匹配， VUE2.X与ElementUI匹配）</li>
 </ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> ElementUI <span class="token keyword">from</span> <span class="token string">'element-ui'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token string">'element-ui/lib/theme-chalk/index.css'</span><span class="token punctuation">;</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> ElementPlus <span class="token keyword">from</span> <span class="token string">'element-plus'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'element-plus/lib/theme-chalk/index.css'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span><span class="token punctuation">;</span>
 
-Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElementUI<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElementPlus<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span></code></pre>
+<h3 id="2-3-VUE文件规则"><a href="#2-3-VUE文件规则" class="headerlink" title="2.3 VUE文件规则"></a>2.3 VUE文件规则</h3><p>1）固定的三个内容：template、script、style</p>
+<ul>
+<li>template ： 必须要有一层父级元素，否则会报错。元素不一定是Div，其他也可以</li>
+<li>script： <ul>
+<li>name : 当前的名称</li>
+<li>components： 组件，引入其他组件</li>
+<li>data： 数据，v-model绑定数据使用</li>
+<li>created、mounted生命周期</li>
+<li>methods： 定义函数</li>
+<li>props、watch：组件通信</li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+<p>2）Vue基本语法  （参考文档<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/%EF%BC%89">https://cn.vuejs.org/v2/api/）</a></p>
+<ul>
+<li>v-model</li>
+<li>v-for</li>
+<li>v-show与v-if区别</li>
+<li>v-bind:class 或 :class</li>
+<li>数据绑定的方式<ul>
+<li><code>:class = &quot;&#123;&#39;active&#39;: isActive&#125;&quot;</code>     // 当isActive为true时就添加class属性，否则不添加</li>
+<li><code>:class = &quot;&#123;&#39;active&#39;: isActive, &#39;sort&#39;: isSort&#125;&quot;</code> // 也可以放多个</li>
+<li>​    </li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
