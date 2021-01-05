@@ -578,7 +578,7 @@ app<span class="token punctuation">.</span><span class="token function">mount</s
 <ul>
 <li>v-model： 在表单控件或者组件上创建双向绑定  只支持input、select、textarea、component</li>
 <li>v-for</li>
-<li>v-show与v-if区别</li>
+<li>v-show与v-if区别： v-if 直接删除DOM元素，而v-show只修改display</li>
 <li>v-bind:class 或 :class</li>
 <li>数据绑定的方式<ul>
 <li><code>:class = &quot;&#123;&#39;active&#39;: isActive&#125;&quot;</code>     // 当isActive为true时就添加class属性，否则不添加</li>
@@ -613,11 +613,28 @@ app<span class="token punctuation">.</span><span class="token function">mount</s
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-row</span><span class="token punctuation">></span></span></code></pre>
 <p><strong>gutter:</strong> 框与框之间的间隔</p>
 <p><strong>span:</strong>  总共24分栏，用来调整框框之间的长度比例，加一块是24</p>
-<p>3）添加验证规则</p>
+<h3 id="2-5-添加输入框验证规则"><a href="#2-5-添加输入框验证规则" class="headerlink" title="2.5 添加输入框验证规则"></a>2.5 添加输入框验证规则</h3><p>1）简单的添加验证规则</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> reg <span class="token operator">=</span> <span class="token regex">/^([a-zA-Z]|[0-9])(\w|\-)+@[a-z0-9A-Z]+\.([a-zA-Z]{2,4})$/</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 邮箱的正则</span>
 <span class="token keyword">let</span> reg <span class="token operator">=</span> <span class="token operator">/</span><span class="token operator">^</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">!</span>\D<span class="token operator">+</span>$<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">!</span><span class="token punctuation">[</span><span class="token operator">^</span>a<span class="token operator">-</span>zA<span class="token operator">-</span>Z<span class="token punctuation">]</span><span class="token operator">+</span>$<span class="token punctuation">)</span>\S<span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">}</span>$<span class="token operator">/</span>                  <span class="token comment" spellcheck="true">// 密码的正则 6-20数字加字母</span>
 <span class="token keyword">let</span> reg <span class="token operator">=</span> <span class="token operator">/</span><span class="token operator">^</span><span class="token punctuation">[</span>a<span class="token operator">-</span>z0<span class="token number">-9</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>$<span class="token operator">/</span>                                      <span class="token comment" spellcheck="true">// 验证码的正则  6位数字或字母</span>
 <span class="token comment" spellcheck="true">// 使用时调用reg.test(字符串)即可</span></code></pre>
+<p>2）在src下新建utils文件夹，存放验证规则</p>
+<img src="https://i.loli.net/2021/01/05/cbtv37Pu9VnU1Bq.png" alt="image.png" style="zoom: 50%;">
+
+<p>以validate.js为例 （使用时直接  <code>import &#123; stripscript,xxx &#125; from &#39;@/utils/validate.js&#39;</code>即可）</p>
+<p>把这里的验证作为一个公共的东西来用</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/* 
+* 过滤特殊字符
+*/</span>
+<span class="token comment" spellcheck="true">// 暴露函数</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token function"> stripscript</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">{</span>   
+  <span class="token keyword">var</span> pattern <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token string">"[`~!@#$^&amp;*()=|{}':;',\\[\\].&lt;>/?~！@#￥……&amp;*（）&amp;;—|{}【】‘；：”“'。，、？]"</span><span class="token punctuation">)</span>
+  <span class="token keyword">var</span> rs <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token function"> </span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    rs <span class="token operator">=</span> rs <span class="token operator">+</span> s<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> rs<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 
                 
             </div>
