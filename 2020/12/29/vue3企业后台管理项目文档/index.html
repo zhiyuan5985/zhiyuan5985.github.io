@@ -886,7 +886,17 @@ svgRule
 <li><p><strong>mutations</strong></p>
 <p>对数据进行计算的方法全部写在里面（类似computed） 在页面中触发时使用<br> this.$store.commit(‘mutationName’)触发Mutations方法改变state的值</p>
 </li>
+<li><p><strong>actions</strong></p>
+<p>actions功能和mutations是类似的，都是改变store里面的state，不过与mutations的两点不同：</p>
+<ul>
+<li>action主要是异步的操作，mutation必须同步操作</li>
 </ul>
+</li>
+<li><p><strong>modules</strong></p>
+</li>
+</ul>
+<img src="https://i.loli.net/2021/01/22/RohxdE6J8OzstvV.jpg" alt="vuex.jpg" style="zoom:200%;">
+
 <h3 id="4-5-浏览器端存储"><a href="#4-5-浏览器端存储" class="headerlink" title="4.5 浏览器端存储"></a>4.5 浏览器端存储</h3><p>1） <strong>Cookie</strong></p>
 <ul>
 <li>安装依赖 <code>npm i cookie_js</code></li>
@@ -924,6 +934,33 @@ svgRule
 <li>清空所有<ul>
 <li>window.sessionStorage.clear()</li>
 </ul>
+</li>
+</ul>
+<h3 id="4-6-路由守卫"><a href="#4-6-路由守卫" class="headerlink" title="4.6 路由守卫"></a>4.6 路由守卫</h3><p>顾名思义，守卫路由，路由不可以想跳转就跳转，比如控制页面只有在登录后才可以跳转。</p>
+<p>（参考<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB%EF%BC%89">https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB）</a></p>
+<p>1） 在router文件夹中添加defend.js</p>
+<pre class=" language-js"><code class="language-js">router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> <span class="token keyword">from</span><span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// beforeEach只有在路由改变的时候才触发</span>
+  <span class="token comment" spellcheck="true">// to 指的是下一个页面</span>
+  <span class="token comment" spellcheck="true">// from 指的是上一个页面</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>2）token令牌</p>
+<img src="https://i.loli.net/2021/01/22/dpP7ELHYhkximUy.png" style="zoom:150%;">
+
+<ul>
+<li><p>直接进入index的时候，参数的to被改变成了’/index’，触发路由指向，就会跑beforeEach</p>
+</li>
+<li><p>查看token，如果没有token则判断白名单</p>
+<ul>
+<li><p>若目标路由不在白名单里面  ===&gt;  next指向login，再次发生路由指向，再跑beforeEach，</p>
+<p>to被改成了’/login’</p>
+</li>
+<li><p>白名单判断存在，则直接执行next(),因为没有参数，所以不会再beforeEach</p>
+</li>
+</ul>
+</li>
+<li><p>========&gt;   避免了死循环问题</p>
 </li>
 </ul>
 
