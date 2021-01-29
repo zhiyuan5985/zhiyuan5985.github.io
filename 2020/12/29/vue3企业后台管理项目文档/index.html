@@ -822,6 +822,32 @@ Vue<span class="token punctuation">.</span><span class="token function">componen
 <ul>
 <li>相同目录下创建svgIcons.vue组件，存放相应的图标，布局</li>
 </ul>
+<p>注：全局组件引入的三种方式：</p>
+<ul>
+<li><pre class=" language-js"><code class="language-js">全局注册，多文件调用（注册全局方法）
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+<span class="token function">  install </span><span class="token punctuation">(</span>Vue<span class="token punctuation">,</span> options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>xxxxxx <span class="token operator">=</span> <span class="token keyword">function</span><span class="token function"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Plugin Test'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><pre class=" language-js"><code class="language-js">定义单独的方法，调用时需要引入
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token function"> xxxxxx</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">let</span> reg <span class="token operator">=</span> <span class="token regex">/^[a-z0-9]{6}$/</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token operator">!</span>reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><pre class=" language-js"><code class="language-js">VUE3<span class="token number">.0</span>方法
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token function"> global</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">const</span> aaa <span class="token operator">=</span><span class="token function"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>    <span class="token keyword">const</span> bbb <span class="token operator">=</span><span class="token function"> ref</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    aaa<span class="token punctuation">,</span>
+    bbb
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
 <p>2）<strong>引入svg</strong></p>
 <ul>
 <li>解析svg文件</li>
@@ -873,6 +899,26 @@ svgRule
   <span class="token keyword">default</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
+<p>注：props不可反向修改</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    dialogVisable<span class="token punctuation">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+props<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  flag<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+watch<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  flag<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token function">handler</span><span class="token punctuation">(</span>newVal<span class="token punctuation">,</span> oldVal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>dialogVisable <span class="token operator">=</span> newVal<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>props接收的是flag，在子组件中不可以直接对flag进行修改，可以采用data中的数据和watch监听对data中的数据进行修改</p>
 <h3 id="4-4-VUEX"><a href="#4-4-VUEX" class="headerlink" title="4.4 VUEX"></a>4.4 VUEX</h3><p>1）VueX状态图</p>
 <p><img src="https://img2018.cnblogs.com/blog/1681559/201905/1681559-20190529203151920-2123222208.png"></p>
 <ul>
@@ -963,6 +1009,7 @@ svgRule
 <li><p>========&gt;   避免了死循环问题</p>
 </li>
 </ul>
+<h3 id="4-7-props和-emit（父子组件传值）"><a href="#4-7-props和-emit（父子组件传值）" class="headerlink" title="4.7 props和$emit（父子组件传值）"></a>4.7 props和$emit（父子组件传值）</h3><p>参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/1rookie/p/8430439.html">https://www.cnblogs.com/1rookie/p/8430439.html</a> </p>
 
                 
             </div>
