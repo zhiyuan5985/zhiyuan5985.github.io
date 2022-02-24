@@ -4,13 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JS基础-值类型和引用类型, Aaron :Chen">
-    <meta name="description" content="值类型和引用类型
-值类型有哪些：Undefined、boolean、Number、String、Symbol
-引用类型：对象、数组、函数、null
-
-const obj1 = &amp;#123;x:100, y: 200&amp;#125;
-const ">
+    <meta name="keywords" content="JS基础-作用域和闭包, Aaron :Chen">
+    <meta name="description" content="闭包的精髓
+函数作为返回值
+// 函数作为返回值 
+function create() &amp;#123;
+	let a  = 100
+    return function() &amp;#123;
+        console.log(a)
+   ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +24,7 @@ const ">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JS基础-值类型和引用类型 | Aaron :Chen</title>
+    <title>JS基础-作用域和闭包 | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -315,12 +317,12 @@ const ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JS基础-值类型和引用类型</h1>
+                    <h1 class="description center-align post-title">JS基础-作用域和闭包</h1>
                 </div>
             </div>
         </div>
@@ -436,16 +438,16 @@ const ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-                                <span class="chip bg-color">JS数据类型</span>
+                            <a href="/tags/%E9%97%AD%E5%8C%85/">
+                                <span class="chip bg-color">闭包</span>
                             </a>
                         
-                            <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
-                                <span class="chip bg-color">深拷贝</span>
+                            <a href="/tags/call%E3%80%81apply%E3%80%81bind/">
+                                <span class="chip bg-color">call、apply、bind</span>
                             </a>
                         
-                            <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
-                                <span class="chip bg-color">手撕代码</span>
+                            <a href="/tags/this%E6%8C%87%E5%90%91/">
+                                <span class="chip bg-color">this指向</span>
                             </a>
                         
                     </div>
@@ -484,52 +486,110 @@ const ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><ul>
-<li>值类型有哪些：Undefined、boolean、Number、String、Symbol</li>
-<li>引用类型：对象、数组、函数、null</li>
-</ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> obj1 <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">x</span><span class="token operator">:</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">&#125;</span>
-<span class="token keyword">const</span> obj2 <span class="token operator">=</span> obj1
-<span class="token keyword">let</span> x1 <span class="token operator">=</span> obj1<span class="token punctuation">.</span>x       <span class="token comment">// 这里只是值类型的传递</span>
-obj2<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">101</span>          <span class="token comment">// 这里才真正改变了 obj1</span>
-x1 <span class="token operator">=</span> <span class="token number">102</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span>    <span class="token comment">// &#123;x:101, y:200&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="typeof能判断那些类型"><a href="#typeof能判断那些类型" class="headerlink" title="typeof能判断那些类型"></a><code>typeof</code>能判断那些类型</h2><ul>
-<li>识别所有的值类型</li>
-<li>识别函数</li>
-<li>判断是否是引用类型（不可再细分）</li>
-</ul>
-<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token parameter">obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">'object'</span> <span class="token operator">||</span> obj <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 判断输入不合法</span>
-    <span class="token keyword">return</span> obj
-  <span class="token punctuation">&#125;</span>
-  <span class="token comment">// 初始化返回结果</span>
-  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-  <span class="token comment">// 逐个遍历赋值</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 保证不是原型的属性</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <h2 id="闭包的精髓"><a href="#闭包的精髓" class="headerlink" title="闭包的精髓"></a>闭包的精髓</h2><ul>
+<li><p>函数作为返回值</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 函数作为返回值 </span>
+<span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">let</span> a  <span class="token operator">=</span> <span class="token number">100</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
     <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span>
+a <span class="token operator">=</span> <span class="token number">200</span>
+<span class="token keyword">const</span> fn <span class="token operator">=</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment">// 打印100</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>函数作为参数</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 函数作为参数</span>
+<span class="token keyword">function</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">200</span>
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">100</span>
+<span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span>     <span class="token comment">// 打印100</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>闭包的应用举例</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 闭包隐藏数据，提供 API</span>
+<span class="token keyword">function</span> <span class="token function">createCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>   <span class="token comment">// 闭包中的数据被隐藏</span>
+    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+        <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> val</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            data<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> val
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> data<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>闭包：所有自由变量的查找是在 <strong>函数定义的地方</strong>，<strong>向上级作用域查找</strong>，不是在执行的地方</p>
+</li>
+</ul>
+<h2 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h2><ul>
+<li><strong>作为普通函数被调用：</strong>指向的是window</li>
+<li><strong>使用<code>call apply bind </code>改变 this 指向</strong><ul>
+<li><code>apply</code> 和 <code>call</code> 会让当前函数立即执行</li>
+<li><code>bind</code> 会返回一个函数，后续需要的时候再调用执行</li>
+</ul>
+</li>
+<li><strong>作为对象的方法被调用</strong>：指向当前对象</li>
+<li><strong>在class方法中调用</strong>：指向当前创建的实例 constructor</li>
+<li><strong>箭头函数</strong>：箭头函数中的this永远是取他上级作用域的this</li>
+</ul>
+<h2 id="bind、call、apply-区别及手写"><a href="#bind、call、apply-区别及手写" class="headerlink" title="bind、call、apply 区别及手写"></a>bind、call、apply 区别及手写</h2><ul>
+<li><p>共同点：为了改变 this 指向的问题</p>
+</li>
+<li><p>不 </p>
+<ul>
+<li><code>call()</code> 和 <code>apply()</code> 是立即执行的，而 <code>bind()</code> 是返回一个函数。</li>
+<li><code>call()</code> 可以传递多个参数，第一个参数和 <code>apply()</code> 一样，是用来替换的对象，后面是参数列表。</li>
+<li><code>apply()</code> 最多只能有两个参数 —— 新<code>this</code> 对象和一个参数数组 <code>argArray</code></li>
+<li><code>bind()</code> 和其他两个方法的作用也是一致的，只是该方法会返回一个函数，并且可以通过’’</li>
+</ul>
+</li>
+<li><p><strong>手写 call</strong></p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myCall</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	context <span class="token operator">=</span> context <span class="token operator">||</span> window          <span class="token comment">// 若没有传入this, 默认绑定window对象</span>
+    context<span class="token punctuation">.</span>fn <span class="token operator">=</span> <span class="token keyword">this</span>                    <span class="token comment">// 将函数挂载到对象的fn属性上</span>
+    <span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// 处理传入的参数</span>
+    <span class="token keyword">const</span> result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>   <span class="token comment">// 通过对象的属性调用该方法</span>
+    <span class="token keyword">delete</span> context<span class="token punctuation">.</span>fn                    <span class="token comment">// 删除该属性</span>
+    <span class="token keyword">return</span> result
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>手写 apply</strong></p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">
+<span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myApply</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    context <span class="token operator">=</span> context <span class="token operator">||</span> window
+    context<span class="token punctuation">.</span>fn <span class="token operator">=</span> <span class="token keyword">this</span>
+    <span class="token keyword">let</span> result
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">delete</span> context<span class="token punctuation">.</span>fn
+    <span class="token keyword">return</span> result
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><ul>
-<li><p>字符串拼接</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token number">100</span> <span class="token operator">+</span> <span class="token string">'10'</span>   <span class="token comment">// '10010'</span>
-<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token boolean">true</span> <span class="token operator">+</span> <span class="token string">'10'</span>  <span class="token comment">// 'true10'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
-<li><p>&#x3D;&#x3D; 运算符  (会隐式的做一些类型转换，只有判断 null 或 undefined 的时候使用 &#x3D;&#x3D; )</p>
-</li>
-<li><p>if 语句和运算符</p>
-<ul>
-<li><code>falsely</code>变量：<code>0, NaN, &#39;&#39;, null, undefined, false</code></li>
-<li>其他均是 <code>truely</code> 变量</li>
-</ul>
-</li>
+<li><p>**手写 bind **</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myBind</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">const</span> self <span class="token operator">=</span> <span class="token keyword">this</span>
+	<span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token function">self</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token operator">...</span>arguments<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 
                 
@@ -557,7 +617,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/">https://zhiyuan5985.github.io/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85%E3%80%81%E6%89%8B%E5%86%99bind%E3%80%81this%E6%8C%87%E5%90%91/">https://zhiyuan5985.github.io/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85%E3%80%81%E6%89%8B%E5%86%99bind%E3%80%81this%E6%8C%87%E5%90%91/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -595,16 +655,16 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-                                    <span class="chip bg-color">JS数据类型</span>
+                                <a href="/tags/%E9%97%AD%E5%8C%85/">
+                                    <span class="chip bg-color">闭包</span>
                                 </a>
                             
-                                <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
-                                    <span class="chip bg-color">深拷贝</span>
+                                <a href="/tags/call%E3%80%81apply%E3%80%81bind/">
+                                    <span class="chip bg-color">call、apply、bind</span>
                                 </a>
                             
-                                <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
-                                    <span class="chip bg-color">手撕代码</span>
+                                <a href="/tags/this%E6%8C%87%E5%90%91/">
+                                    <span class="chip bg-color">this指向</span>
                                 </a>
                             
                         </div>
@@ -778,10 +838,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
                     <div class="card-image">
@@ -799,9 +858,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -810,7 +869,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -837,13 +895,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85%E3%80%81%E6%89%8B%E5%86%99bind%E3%80%81this%E6%8C%87%E5%90%91/">
+                <a href="/2022/02/23/JS%E5%9F%BA%E7%A1%80-%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="JS基础-作用域和闭包">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="JS基础-原型和原型链">
                         
-                        <span class="card-title">JS基础-作用域和闭包</span>
+                        <span class="card-title">JS基础-原型和原型链</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -854,7 +912,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-23
                             </span>
                         <span class="publish-author">
                             
@@ -867,16 +925,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%97%AD%E5%8C%85/">
-                        <span class="chip bg-color">闭包</span>
-                    </a>
-                    
-                    <a href="/tags/call%E3%80%81apply%E3%80%81bind/">
-                        <span class="chip bg-color">call、apply、bind</span>
-                    </a>
-                    
-                    <a href="/tags/this%E6%8C%87%E5%90%91/">
-                        <span class="chip bg-color">this指向</span>
+                    <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+                        <span class="chip bg-color">原型链</span>
                     </a>
                     
                 </div>
