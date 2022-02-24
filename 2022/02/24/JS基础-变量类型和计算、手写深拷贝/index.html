@@ -4,14 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JS基础-原型和原型链, Aaron :Chen">
-    <meta name="description" content="Class的原型本质
-class 实现继承
-class People &amp;#123;
-	constructer(name, number) &amp;#123;
-     	this.name = name;
- 	&amp;#125;
-    sayHi()">
+    <meta name="keywords" content="JS基础-值类型和引用类型, Aaron :Chen">
+    <meta name="description" content="值类型和引用类型
+值类型有哪些：Undefined、boolean、Number、String、Symbol
+引用类型：对象、数组、函数、null
+
+const obj1 = &amp;#123;x:100, y: 200&amp;#125;
+const ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +22,7 @@ class People &amp;#123;
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JS基础-原型和原型链 | Aaron :Chen</title>
+    <title>JS基础-值类型和引用类型 | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -316,12 +315,12 @@ class People &amp;#123;
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JS基础-原型和原型链</h1>
+                    <h1 class="description center-align post-title">JS基础-值类型和引用类型</h1>
                 </div>
             </div>
         </div>
@@ -437,8 +436,16 @@ class People &amp;#123;
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/">
-                                <span class="chip bg-color">原型链</span>
+                            <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                                <span class="chip bg-color">JS数据类型</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+                                <span class="chip bg-color">深拷贝</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
+                                <span class="chip bg-color">手撕代码</span>
                             </a>
                         
                     </div>
@@ -453,7 +460,7 @@ class People &amp;#123;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-23
+                    2022-02-24
                 </div>
                 
 
@@ -477,72 +484,52 @@ class People &amp;#123;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Class的原型本质"><a href="#Class的原型本质" class="headerlink" title="Class的原型本质"></a>Class的原型本质</h2><ul>
-<li><p>class 实现继承</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">People</span> <span class="token punctuation">&#123;</span>
-	<span class="token function">constructer</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> number</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     	<span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
- 	<span class="token punctuation">&#125;</span>
-    <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
-        	<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">姓名 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">, 学号 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token keyword">this</span><span class="token punctuation">.</span>number<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
-        <span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">People</span> <span class="token punctuation">&#123;</span>
-	<span class="token function">constructer</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> number</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     	<span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>number <span class="token operator">=</span> number<span class="token punctuation">;</span>
- 	<span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">let</span> xialuo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">'xialuo'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>原型</p>
-<ul>
-<li>每个 class 都有显式原型 <code>prototype</code></li>
-<li>每个实例都有隐式原型 <code>__proto__</code></li>
-<li>实例的<code>__proto__</code> 指向对应 class 的 <code>prototype</code>（父类的显式原型等于子类的隐式原型）</li>
+                <h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><ul>
+<li>值类型有哪些：Undefined、boolean、Number、String、Symbol</li>
+<li>引用类型：对象、数组、函数、null</li>
 </ul>
-<p><img src="/images/JS/1.jpg" alt="原型链"></p>
-</li>
-<li><p>底层原型链</p>
-<ul>
-<li><code>instanceof</code> 的原理就是顺着原型链网上找，看能不能对应上某个class的原型</li>
-</ul>
-<p><img src="/images/JS/2.jpg" alt="原型链1">)</p>
-</li>
-</ul>
-<h2 id="如何判断一个变量是不是数组"><a href="#如何判断一个变量是不是数组" class="headerlink" title="如何判断一个变量是不是数组"></a>如何判断一个变量是不是数组</h2><ul>
-<li><code>boolean isArray = x instanceof Array</code></li>
-</ul>
-<h2 id="手写一个简易的JQuery，考虑插件和扩展性"><a href="#手写一个简易的JQuery，考虑插件和扩展性" class="headerlink" title="手写一个简易的JQuery，考虑插件和扩展性"></a>手写一个简易的<code>JQuery</code>，考虑插件和扩展性</h2>  <pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">jQuery</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">selector</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> res <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span>
-    <span class="token keyword">const</span> len <span class="token operator">=</span> res<span class="token punctuation">.</span>length
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> res<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">=</span> len 
-  <span class="token punctuation">&#125;</span>
-  <span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token function">each</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">const</span> elem <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-      <span class="token function">fn</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token function">on</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token parameter">elem</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      elem<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> fn<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token comment">// 扩展</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> obj1 <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">x</span><span class="token operator">:</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">&#125;</span>
+<span class="token keyword">const</span> obj2 <span class="token operator">=</span> obj1
+<span class="token keyword">let</span> x1 <span class="token operator">=</span> obj1<span class="token punctuation">.</span>x       <span class="token comment">// 这里只是值类型的传递</span>
+obj2<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">101</span>          <span class="token comment">// 这里才真正改变了 obj1</span>
+x1 <span class="token operator">=</span> <span class="token number">102</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span>    <span class="token comment">// &#123;x:101, y:200&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="typeof能判断那些类型"><a href="#typeof能判断那些类型" class="headerlink" title="typeof能判断那些类型"></a><code>typeof</code>能判断那些类型</h2><ul>
+<li>识别所有的值类型</li>
+<li>识别函数</li>
+<li>判断是否是引用类型（不可再细分）</li>
+</ul>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token parameter">obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">'object'</span> <span class="token operator">||</span> obj <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 判断输入不合法</span>
+    <span class="token keyword">return</span> obj
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">// 初始化返回结果</span>
+  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+  <span class="token comment">// 逐个遍历赋值</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 保证不是原型的属性</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><ul>
+<li><p>字符串拼接</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token number">100</span> <span class="token operator">+</span> <span class="token string">'10'</span>   <span class="token comment">// '10010'</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token boolean">true</span> <span class="token operator">+</span> <span class="token string">'10'</span>  <span class="token comment">// 'true10'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>&#x3D;&#x3D; 运算符  (会隐式的做一些类型转换，只有判断 null 或 undefined 的时候使用 &#x3D;&#x3D; )</p>
+</li>
+<li><p>if 语句和运算符</p>
 <ul>
-<li>造轮子的话： <code>class myJquery extends jQuery &#123;&#125;</code></li>
+<li><code>falsely</code>变量：<code>0, NaN, &#39;&#39;, null, undefined, false</code></li>
+<li>其他均是 <code>truely</code> 变量</li>
+</ul>
+</li>
 </ul>
 
                 
@@ -570,7 +557,7 @@ class People &amp;#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/02/23/JS%E5%9F%BA%E7%A1%80-%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/">https://zhiyuan5985.github.io/2022/02/23/JS%E5%9F%BA%E7%A1%80-%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/">https://zhiyuan5985.github.io/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -608,8 +595,16 @@ class People &amp;#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/">
-                                    <span class="chip bg-color">原型链</span>
+                                <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                                    <span class="chip bg-color">JS数据类型</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+                                    <span class="chip bg-color">深拷贝</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
+                                    <span class="chip bg-color">手撕代码</span>
                                 </a>
                             
                         </div>
@@ -783,9 +778,10 @@ class People &amp;#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
                     <div class="card-image">
@@ -803,9 +799,9 @@ class People &amp;#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -814,6 +810,7 @@ class People &amp;#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -840,13 +837,13 @@ class People &amp;#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/23/CSS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                <a href="/2022/02/23/JS%E5%9F%BA%E7%A1%80-%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="CSS基础知识">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="JS基础-原型和原型链">
                         
-                        <span class="card-title">CSS基础知识</span>
+                        <span class="card-title">JS基础-原型和原型链</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -870,12 +867,8 @@ class People &amp;#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">前端面试</span>
+                    <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+                        <span class="chip bg-color">原型链</span>
                     </a>
                     
                 </div>
