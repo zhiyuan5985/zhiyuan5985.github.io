@@ -4,13 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JS基础-值类型和引用类型, Aaron :Chen">
-    <meta name="description" content="值类型和引用类型
-值类型有哪些：Undefined、boolean、Number、String、Symbol
-引用类型：对象、数组、函数、null
-
-const obj1 = &amp;#123;x:100, y: 200&amp;#125;
-const ">
+    <meta name="keywords" content="Web-API-Ajax, Aaron :Chen">
+    <meta name="description" content="Ajax
+手写简易 AJax
+function ajax(url, successFn) &amp;#123;
+    const xhr = new XMLHttpRequest()
+    xhr.open(&#34;GET&#34;, &#34;/api&#34;, fal">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +21,7 @@ const ">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JS基础-值类型和引用类型 | Aaron :Chen</title>
+    <title>Web-API-Ajax | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -315,12 +314,12 @@ const ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JS基础-值类型和引用类型</h1>
+                    <h1 class="description center-align post-title">Web-API-Ajax</h1>
                 </div>
             </div>
         </div>
@@ -436,16 +435,12 @@ const ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-                                <span class="chip bg-color">JS数据类型</span>
+                            <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
+                                <span class="chip bg-color">手写Ajax</span>
                             </a>
                         
-                            <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
-                                <span class="chip bg-color">深拷贝</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
-                                <span class="chip bg-color">手撕代码</span>
+                            <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
+                                <span class="chip bg-color">同源策略</span>
                             </a>
                         
                     </div>
@@ -469,7 +464,7 @@ const ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-24
+                    2022-02-25
                 </div>
                 
 
@@ -493,52 +488,83 @@ const ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><ul>
-<li>值类型有哪些：Undefined、boolean、Number、String、Symbol</li>
-<li>引用类型：对象、数组、函数、null</li>
-</ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> obj1 <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">x</span><span class="token operator">:</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">&#125;</span>
-<span class="token keyword">const</span> obj2 <span class="token operator">=</span> obj1
-<span class="token keyword">let</span> x1 <span class="token operator">=</span> obj1<span class="token punctuation">.</span>x       <span class="token comment">// 这里只是值类型的传递</span>
-obj2<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">101</span>          <span class="token comment">// 这里才真正改变了 obj1</span>
-x1 <span class="token operator">=</span> <span class="token number">102</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span>    <span class="token comment">// &#123;x:101, y:200&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="typeof能判断那些类型"><a href="#typeof能判断那些类型" class="headerlink" title="typeof能判断那些类型"></a><code>typeof</code>能判断那些类型</h2><ul>
-<li>识别所有的值类型</li>
-<li>识别函数</li>
-<li>判断是否是引用类型（不可再细分）</li>
-</ul>
-<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token parameter">obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">'object'</span> <span class="token operator">||</span> obj <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 判断输入不合法</span>
-    <span class="token keyword">return</span> obj
-  <span class="token punctuation">&#125;</span>
-  <span class="token comment">// 初始化返回结果</span>
-  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-  <span class="token comment">// 逐个遍历赋值</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 保证不是原型的属性</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
+<li><p>手写简易 <code>AJax</code></p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> successFn</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 这里的函数异步执行</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">successFn</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'其他情况'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>	
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>使用 Promise </p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+   	    xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 这里的函数异步执行</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
+                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'404 Not Found'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+    	<span class="token punctuation">&#125;</span>
+        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>	
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><ul>
-<li><p>字符串拼接</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token number">100</span> <span class="token operator">+</span> <span class="token string">'10'</span>   <span class="token comment">// '10010'</span>
-<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token boolean">true</span> <span class="token operator">+</span> <span class="token string">'10'</span>  <span class="token comment">// 'true10'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 </li>
-<li><p>&#x3D;&#x3D; 运算符  (会隐式的做一些类型转换，只有判断 null 或 undefined 的时候使用 &#x3D;&#x3D; )</p>
-</li>
-<li><p>if 语句和运算符</p>
+<li><p><code>readyState </code></p>
 <ul>
-<li><code>falsely</code>变量：<code>0, NaN, &#39;&#39;, null, undefined, false</code></li>
-<li>其他均是 <code>truely</code> 变量</li>
+<li>0 - （未初始化） 还没有调用 send 方法</li>
+<li>1 - （载入） 已调用 send() 方法， 正在发送请求</li>
+<li>2 - （载入完成） send() 方法执行完成，已经接收到全部响应内容</li>
+<li>3 - （交互）正在解析响应内容</li>
+<li><strong>4 - （完成）响应内容解析完成，可以在客户端调用</strong></li>
 </ul>
 </li>
+<li><p>status</p>
+<ul>
+<li><code>301</code> 永久重定向</li>
+<li><code>302 </code>临时重定向</li>
+<li><code>304 </code>读本地缓存</li>
+<li><code>403 </code>未授权</li>
+<li><code>404 </code>未找到</li>
+<li><code>5xx </code>服务器异常</li>
+</ul>
+</li>
+</ul>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><ul>
+<li>Ajax 请求时， 浏览器要求当前网页和 server 必须同源</li>
+<li>同源：协议、域名、端口，三者必须一致</li>
+<li>但是 图片、<code>CSS</code>、<code>JS</code> 可以无视同源策略</li>
+</ul>
+<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><ul>
+<li>所有的跨域，都需要经过 server 端允许和配合</li>
+<li>未经 server 端允许就实现跨域，说明浏览器有漏洞</li>
+</ul>
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a><code>JSONP</code></h2><ul>
+<li>服务器可以任意动态拼接数据返回</li>
+<li>script 可以绕过跨域</li>
+<li>所有 script 可以获得跨域数据，只要服务器愿意</li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>JQuery</li>
+<li>Fetch</li>
+<li>Axios</li>
 </ul>
 
                 
@@ -566,7 +592,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/">https://zhiyuan5985.github.io/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/02/25/Web%20API-Ajax/">https://zhiyuan5985.github.io/2022/02/25/Web%20API-Ajax/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -604,16 +630,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-                                    <span class="chip bg-color">JS数据类型</span>
+                                <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
+                                    <span class="chip bg-color">手写Ajax</span>
                                 </a>
                             
-                                <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
-                                    <span class="chip bg-color">深拷贝</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
-                                    <span class="chip bg-color">手撕代码</span>
+                                <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
+                                    <span class="chip bg-color">同源策略</span>
                                 </a>
                             
                         </div>
@@ -787,9 +809,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/02/25/Web%20API-Ajax/">
                     <div class="card-image">
@@ -807,9 +830,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -822,6 +845,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -844,13 +868,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85%E3%80%81%E6%89%8B%E5%86%99bind%E3%80%81this%E6%8C%87%E5%90%91/">
+                <a href="/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="JS基础-作用域和闭包">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JS基础-值类型和引用类型">
                         
-                        <span class="card-title">JS基础-作用域和闭包</span>
+                        <span class="card-title">JS基础-值类型和引用类型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -878,16 +902,16 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%97%AD%E5%8C%85/">
-                        <span class="chip bg-color">闭包</span>
+                    <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                        <span class="chip bg-color">JS数据类型</span>
                     </a>
                     
-                    <a href="/tags/call%E3%80%81apply%E3%80%81bind/">
-                        <span class="chip bg-color">call、apply、bind</span>
+                    <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+                        <span class="chip bg-color">深拷贝</span>
                     </a>
                     
-                    <a href="/tags/this%E6%8C%87%E5%90%91/">
-                        <span class="chip bg-color">this指向</span>
+                    <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
+                        <span class="chip bg-color">手撕代码</span>
                     </a>
                     
                 </div>
