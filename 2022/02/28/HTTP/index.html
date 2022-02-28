@@ -4,12 +4,21 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Web-API-Ajax, Aaron :Chen">
-    <meta name="description" content="Ajax
-手写简易 AJax
-function ajax(url, successFn) &amp;#123;
-    const xhr = new XMLHttpRequest()
-    xhr.open(&#34;GET&#34;, &#34;/api&#34;, fal">
+    <meta name="keywords" content="HTTP协议, Aaron :Chen">
+    <meta name="description" content="HTTP常见的状态码有哪些
+1xx：服务器收到请求
+2xx：请求成功，如 200
+200： 成功
+
+
+3xx：重定向，如 302
+301：永久重定向
+302：临时重定向
+304：资源在本地还有效
+
+
+4xx：客户端错误，如 404
+403：">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +30,7 @@ function ajax(url, successFn) &amp;#123;
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Web-API-Ajax | Aaron :Chen</title>
+    <title>HTTP协议 | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -314,12 +323,12 @@ function ajax(url, successFn) &amp;#123;
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Web-API-Ajax</h1>
+                    <h1 class="description center-align post-title">HTTP协议</h1>
                 </div>
             </div>
         </div>
@@ -435,12 +444,8 @@ function ajax(url, successFn) &amp;#123;
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
-                                <span class="chip bg-color">手写Ajax</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                                <span class="chip bg-color">同源策略</span>
+                            <a href="/tags/HTTP/">
+                                <span class="chip bg-color">HTTP</span>
                             </a>
                         
                     </div>
@@ -451,8 +456,8 @@ function ajax(url, successFn) &amp;#123;
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JS%E5%9F%BA%E7%A1%80/" class="post-category">
-                                JS基础
+                            <a href="/categories/HTTP/" class="post-category">
+                                HTTP
                             </a>
                         
                     </div>
@@ -464,7 +469,7 @@ function ajax(url, successFn) &amp;#123;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-25
+                    2022-02-28
                 </div>
                 
 
@@ -488,84 +493,136 @@ function ajax(url, successFn) &amp;#123;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
-<li><p>手写简易 <code>AJax</code></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> successFn</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-    xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 这里的函数异步执行</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token function">successFn</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'其他情况'</span><span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-    xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>	
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="HTTP常见的状态码有哪些"><a href="#HTTP常见的状态码有哪些" class="headerlink" title="HTTP常见的状态码有哪些"></a>HTTP常见的状态码有哪些</h2><ul>
+<li><code>1xx</code>：服务器收到请求</li>
+<li><code>2xx</code>：请求成功，如 200<ul>
+<li><code>200</code>： 成功</li>
+</ul>
 </li>
-<li><p>使用 Promise </p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-   	    xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 这里的函数异步执行</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">resolve</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'404 Not Found'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
-    	<span class="token punctuation">&#125;</span>
-        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>	
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<li><code>3xx</code>：重定向，如 302<ul>
+<li><code>301</code>：永久重定向</li>
+<li><code>302</code>：临时重定向</li>
+<li><code>304</code>：资源在本地还有效</li>
+</ul>
 </li>
-<li><p><code>readyState </code></p>
+<li><code>4xx</code>：客户端错误，如 404<ul>
+<li><code>403</code>：没有权限</li>
+<li><code>404</code>：资源未找到</li>
+</ul>
+</li>
+<li><code>5xx</code>：服务端错误，如 500<ul>
+<li><code>500</code>：服务器错误</li>
+<li><code>504</code>：网关超时</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP-Methods"><a href="#HTTP-Methods" class="headerlink" title="HTTP Methods"></a>HTTP Methods</h2><ul>
+<li>传统的 API 设计：把每个 url 当做一个功能<ul>
+<li>get  获取数据</li>
+<li>post  新建数据</li>
+<li>patch &#x2F; put  更新数据</li>
+<li>delete  删除数据</li>
+</ul>
+</li>
+<li>Restful API ：把 每个 url 当做一个唯一资源</li>
+</ul>
+<h2 id="HTTP-Headers"><a href="#HTTP-Headers" class="headerlink" title="HTTP Headers"></a>HTTP Headers</h2><ul>
+<li>Request Headers<ul>
+<li>Accept 浏览器可接收的数据格式</li>
+<li>Accept-Encoding ：浏览器可接收的压缩算法，如 <code>gzip</code></li>
+<li>Accept-Language： 浏览器可接收的语言，如 <code>zh-CN</code></li>
+<li>connection： keep-alive 一次TCP连接重复使用</li>
+<li>cookie</li>
+<li>Host</li>
+<li>User-Agent：浏览器信息</li>
+</ul>
+</li>
+<li>Response Headers<ul>
+<li>Content-type ： 返回的数据类型</li>
+<li>Content-length ：返回数据的大小，多少字节</li>
+<li>Content-Encoding：返回数据的压缩算法</li>
+<li>set-Cookie：服务端改 cookie</li>
+</ul>
+</li>
+<li>缓存相关的 Headers<ul>
+<li>Cache-Control</li>
+<li>Last-Modified</li>
+<li><code>Etag</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP-缓存"><a href="#HTTP-缓存" class="headerlink" title="HTTP 缓存"></a>HTTP 缓存</h2><ul>
+<li><p>哪些资源可以被缓存？ </p>
 <ul>
-<li>0 - （未初始化） 还没有调用 send 方法</li>
-<li>1 - （载入） 已调用 send() 方法， 正在发送请求</li>
-<li>2 - （载入完成） send() 方法执行完成，已经接收到全部响应内容</li>
-<li>3 - （交互）正在解析响应内容</li>
-<li><strong>4 - （完成）响应内容解析完成，可以在客户端调用</strong></li>
+<li>—— 静态资源<code> (js、css、img)</code></li>
 </ul>
 </li>
-<li><p>status</p>
+<li><p>强制缓存</p>
+<p><img src="/images/JS/HTTP/image-20220228155331241.png" alt="强制缓存策略"></p>
+</li>
+<li><p>cache-control 的值</p>
 <ul>
-<li><code>301</code> 永久重定向</li>
-<li><code>302 </code>临时重定向</li>
-<li><code>304 </code>读本地缓存</li>
-<li><code>403 </code>未授权</li>
-<li><code>404 </code>未找到</li>
-<li><code>5xx </code>服务器异常</li>
+<li>max-age ： 设置缓存的过期时间</li>
+<li>no-cache：不用强制缓存</li>
+<li>no-store：不用缓存</li>
+</ul>
+</li>
+<li><p>Expires</p>
+<ul>
+<li><p>同在 response headers 里</p>
+</li>
+<li><p>已被 cache-control 替代</p>
+</li>
+</ul>
+</li>
+<li><p>协商缓存</p>
+<ul>
+<li><p>服务器端缓存策略  （服务端来判断这个文件是否需要缓存）</p>
+</li>
+<li><p>服务器判断客户端资源，是否和服务端资源一样</p>
+</li>
+<li><p>一致则返回 304，否则返回 200 和最新的资源</p>
+<p><img src="/images%5CJS%5CHTTP%5Cimage-20220228155427147.png" alt="协商缓存策略"></p>
+</li>
+</ul>
+</li>
+<li><p>资源标识（两种）</p>
+<ul>
+<li>Last-Modified 资源的最后修改时间， 只能精确到秒级</li>
+<li><code>Etag</code>  资源的唯一标志(一个唯一字符串)，优先使用 <code>Etag</code></li>
 </ul>
 </li>
 </ul>
-<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><ul>
-<li>Ajax 请求时， 浏览器要求当前网页和 server 必须同源</li>
-<li>同源：协议、域名、端口，三者必须一致</li>
-<li>但是 图片、<code>CSS</code>、<code>JS</code> 可以无视同源策略</li>
+<p><img src="/images%5CJS%5CHTTP%5Cimage-20220228155447928.png" alt="缓存全过程"></p>
+<ul>
+<li>三种刷新操作<ul>
+<li>正常操作（访问链接）：强制缓存有效，协商缓存有效</li>
+<li>手动刷新（<code>f5、cmd+r</code>）：强制缓存失效， 协商缓存有效</li>
+<li>强制刷新（<code>ctrl+f5 / cmd+shift+r</code>）:强制缓存失效，协商缓存失效</li>
 </ul>
-<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><ul>
-<li>所有的跨域，都需要经过 server 端允许和配合</li>
-<li>未经 server 端允许就实现跨域，说明浏览器有漏洞</li>
+</li>
 </ul>
-<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a><code>JSONP</code></h2><ul>
-<li>服务器可以任意动态拼接数据返回</li>
-<li>script 可以绕过跨域</li>
-<li>所有 script 可以获得跨域数据，只要服务器愿意</li>
+<h2 id="HTTPS协议"><a href="#HTTPS协议" class="headerlink" title="HTTPS协议"></a><code>HTTPS</code>协议</h2><ul>
+<li><p>HTTP 和 <code>HTTPS </code>的区别</p>
+<ul>
+<li>HTTP 是明文传输，敏感信息容易被中间劫持</li>
+<li><code>HTTPS = HTTP + 加密</code>，劫持了也无法解密</li>
+<li>现代浏览器开始强制 https 协议</li>
 </ul>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
-<li>JQuery</li>
-<li>Fetch</li>
-<li>Axios</li>
+</li>
+<li><p>加密方式</p>
+<ul>
+<li>对称加密：一个 key 同时负责加密和解密 </li>
+<li>非对称加密：一对key，A加密后，用B解密；B加密后，用A解密</li>
 </ul>
+</li>
+<li><p><code>https</code> 证书</p>
+<ul>
+<li>浏览器校验证书，防止中间人攻击</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images%5CJS%5CHTTP%5Cimage-20220228155516384.png" alt="HTTPS全过程"></p>
 
                 
             </div>
@@ -592,7 +649,7 @@ function ajax(url, successFn) &amp;#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/02/25/Web%20API-Ajax/">https://zhiyuan5985.github.io/2022/02/25/Web%20API-Ajax/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/02/28/HTTP/">https://zhiyuan5985.github.io/2022/02/28/HTTP/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -630,12 +687,8 @@ function ajax(url, successFn) &amp;#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
-                                    <span class="chip bg-color">手写Ajax</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                                    <span class="chip bg-color">同源策略</span>
+                                <a href="/tags/HTTP/">
+                                    <span class="chip bg-color">HTTP</span>
                                 </a>
                             
                         </div>
@@ -809,9 +862,10 @@ function ajax(url, successFn) &amp;#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/02/28/HTTP/">
                     <div class="card-image">
@@ -829,9 +883,9 @@ function ajax(url, successFn) &amp;#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -844,6 +898,7 @@ function ajax(url, successFn) &amp;#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -862,13 +917,13 @@ function ajax(url, successFn) &amp;#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+                <a href="/2022/02/25/Web%20API-Ajax/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JS基础-值类型和引用类型">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Web-API-Ajax">
                         
-                        <span class="card-title">JS基础-值类型和引用类型</span>
+                        <span class="card-title">Web-API-Ajax</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -879,7 +934,7 @@ function ajax(url, successFn) &amp;#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-25
                             </span>
                         <span class="publish-author">
                             
@@ -896,16 +951,12 @@ function ajax(url, successFn) &amp;#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-                        <span class="chip bg-color">JS数据类型</span>
+                    <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
+                        <span class="chip bg-color">手写Ajax</span>
                     </a>
                     
-                    <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
-                        <span class="chip bg-color">深拷贝</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
-                        <span class="chip bg-color">手撕代码</span>
+                    <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
+                        <span class="chip bg-color">同源策略</span>
                     </a>
                     
                 </div>
