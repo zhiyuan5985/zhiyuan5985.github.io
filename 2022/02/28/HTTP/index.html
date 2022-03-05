@@ -7,18 +7,22 @@
     <meta name="keywords" content="HTTP协议, Aaron :Chen">
     <meta name="description" content="HTTP常见的状态码有哪些
 1xx：服务器收到请求
+
 2xx：请求成功，如 200
+
 200： 成功
 
 
 3xx：重定向，如 302
+
 301：永久重定向
 302：临时重定向
 304：资源在本地还有效
 
 
 4xx：客户端错误，如 404
-403：">
+
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -494,23 +498,30 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="HTTP常见的状态码有哪些"><a href="#HTTP常见的状态码有哪些" class="headerlink" title="HTTP常见的状态码有哪些"></a>HTTP常见的状态码有哪些</h2><ul>
-<li><code>1xx</code>：服务器收到请求</li>
-<li><code>2xx</code>：请求成功，如 200<ul>
+<li><p><code>1xx</code>：服务器收到请求</p>
+</li>
+<li><p><code>2xx</code>：请求成功，如 200</p>
+<ul>
 <li><code>200</code>： 成功</li>
 </ul>
 </li>
-<li><code>3xx</code>：重定向，如 302<ul>
+<li><p><code>3xx</code>：重定向，如 302</p>
+<ul>
 <li><code>301</code>：永久重定向</li>
 <li><code>302</code>：临时重定向</li>
 <li><code>304</code>：资源在本地还有效</li>
 </ul>
 </li>
-<li><code>4xx</code>：客户端错误，如 404<ul>
+<li><p><code>4xx</code>：客户端错误，如 404</p>
+<ul>
+<li><code>400</code>：请求的字段类型与后台不一致，请求无效</li>
+<li><code>401</code> ：需要用户权限</li>
 <li><code>403</code>：没有权限</li>
 <li><code>404</code>：资源未找到</li>
 </ul>
 </li>
-<li><code>5xx</code>：服务端错误，如 500<ul>
+<li><p><code>5xx</code>：服务端错误，如 500</p>
+<ul>
 <li><code>500</code>：服务器错误</li>
 <li><code>504</code>：网关超时</li>
 </ul>
@@ -623,6 +634,59 @@
 </li>
 </ul>
 <p><img src="/images/JS/HTTP/image-20220228155516384.png" alt="HTTPS全过程"></p>
+<h2 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h2><p><img src="/images/JS/HTTP/image-20220304215040786.png" alt="TCP三次握手"></p>
+<ul>
+<li><p>A 向 B 发送同步请求</p>
+</li>
+<li><p>B 回复同步请求应答</p>
+</li>
+<li><p>A 回复ACK 确认</p>
+<p><strong>通过以上的三次握手来确认 A 和 B 都有发送和接收的能力</strong></p>
+</li>
+</ul>
+<h2 id="TCP-和-UDP-的区别"><a href="#TCP-和-UDP-的区别" class="headerlink" title="TCP 和 UDP 的区别"></a>TCP 和 UDP 的区别</h2><ul>
+<li>TCP 是面向连接的，UDP 是无连接的，不需要先建立链接</li>
+<li>TCP 提供可靠的服务，数据无差错不丢失的按序到达；UDP 尽最大努力交付，即不保证可靠交付</li>
+<li>TCP 是面向字节流， UDP 面向报文</li>
+</ul>
+<h2 id="Get-和-Post-的区别"><a href="#Get-和-Post-的区别" class="headerlink" title="Get 和 Post 的区别"></a>Get 和 Post 的区别</h2><ul>
+<li>get 参数通过 url 来传递， post 放在 request body 当中，所以 get 请求不够安全</li>
+<li>get 请求的 url 是有长度限制的，而 post 没有</li>
+<li>get 请求的参数会保存在浏览记录里， 而 post 不会</li>
+</ul>
+<h2 id="什么是-webSocket"><a href="#什么是-webSocket" class="headerlink" title="什么是 webSocket"></a>什么是 webSocket</h2><ul>
+<li>是 HTML5 中的协议，支持持久连续，而 http 协议不支持持久连续</li>
+</ul>
+<h2 id="Fetch-发送两次请求的原因"><a href="#Fetch-发送两次请求的原因" class="headerlink" title="Fetch 发送两次请求的原因"></a>Fetch 发送两次请求的原因</h2><ul>
+<li>fetch 发送 post 请求的时候，导致 fetch 第一次发送一个 Options 请求，询问服务器是否支持修改的请求头，如果支持，则在第二次发送真正的请求</li>
+</ul>
+<h2 id="Cookie、-sessionStorage、-localStorage-的区别"><a href="#Cookie、-sessionStorage、-localStorage-的区别" class="headerlink" title="Cookie、 sessionStorage、 localStorage 的区别"></a>Cookie、 sessionStorage、 localStorage 的区别</h2><ul>
+<li>localStorage和sessionStorage特性<ul>
+<li>HTML5 专门为存储而设计，最大可存 5M</li>
+<li>API 简单易用 setItem， getItem</li>
+<li>不会随着 http 请求发送</li>
+<li>localStorage <strong>数据会永久存储，除非代码删除或者手动删除</strong></li>
+<li>sessionStorage <strong>数据只存在于当前会话，浏览器关闭则清空</strong></li>
+</ul>
+</li>
+<li>Cookie 只有 4KB 的容量</li>
+</ul>
+<h2 id="Web-安全"><a href="#Web-安全" class="headerlink" title="Web 安全"></a>Web 安全</h2><ul>
+<li><p>XSS 跨域请求攻击</p>
+<ul>
+<li>插入脚本，获取 cookie， 发送到我的服务器（服务器配合跨域）</li>
+<li>预防：前端在网页显示的时候，把 <code>&lt;</code> 和 <code>&gt;</code> 替换掉</li>
+</ul>
+</li>
+<li><p>XSRF 跨站请求预防</p>
+<p><img src="/images/JS/HTTP/image-20220305155414633.png" alt="XSRF攻击1"></p>
+<p><img src="/images/JS/HTTP/image-20220305155536674.png" alt="XSRF攻击2"></p>
+<ul>
+<li>使用 Post 接口</li>
+<li>增加验证，例如密码，短信验证码，指纹等等</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>

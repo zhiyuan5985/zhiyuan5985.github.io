@@ -514,7 +514,66 @@ display: inl">
 <li>答案：122</li>
 <li>box-sizing: 为 content-box 时， width 指的时内容区；为 border-box 时，width 指的是<code>offsetWidth</code></li>
 </ul>
-<h1 id="CSS-布局"><a href="#CSS-布局" class="headerlink" title="CSS 布局"></a><code>CSS</code> <strong>布局</strong></h1><h2 id="Margin-负值问题"><a href="#Margin-负值问题" class="headerlink" title="Margin 负值问题"></a>Margin 负值问题</h2><ul>
+<h2 id="HTML-新增元素"><a href="#HTML-新增元素" class="headerlink" title="HTML 新增元素"></a>HTML 新增元素</h2><ul>
+<li><p>语义化标签</p>
+<ul>
+<li>header</li>
+<li>footer</li>
+<li>nav</li>
+<li>aside</li>
+<li>section</li>
+<li>main</li>
+<li>article</li>
+<li>figure</li>
+</ul>
+</li>
+<li><p>移除过时标签</p>
+<ul>
+<li>big</li>
+<li>font</li>
+<li>frame</li>
+<li>frameset</li>
+</ul>
+</li>
+<li><p>web 存储</p>
+<ul>
+<li>localStorage</li>
+<li>sessionStorage</li>
+</ul>
+</li>
+<li><p>多媒体</p>
+<ul>
+<li>audio</li>
+<li>vedio</li>
+</ul>
+</li>
+</ul>
+<h1 id="CSS-布局"><a href="#CSS-布局" class="headerlink" title="CSS 布局"></a><code>CSS</code> <strong>布局</strong></h1><h2 id="CSS3-新特性"><a href="#CSS3-新特性" class="headerlink" title="CSS3 新特性"></a><code>CSS3</code> 新特性</h2><ul>
+<li>布局<ul>
+<li>flex 布局</li>
+</ul>
+</li>
+<li>选择器<ul>
+<li>nth-child 选择器</li>
+</ul>
+</li>
+<li>动画<ul>
+<li>animation</li>
+</ul>
+</li>
+<li>2D、3D 转换<ul>
+<li>transform</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS-选择器有哪些"><a href="#CSS-选择器有哪些" class="headerlink" title="CSS 选择器有哪些"></a>CSS 选择器有哪些</h2><ul>
+<li>id 选择器</li>
+<li>class 选择器</li>
+<li>标签选择器</li>
+<li>伪元素选择器</li>
+<li>伪类选择器</li>
+</ul>
+<h2 id="Margin-负值问题"><a href="#Margin-负值问题" class="headerlink" title="Margin 负值问题"></a>Margin 负值问题</h2><ul>
 <li>margin-top 和 margin-left 负值，元素向上，向左移动</li>
 <li>margin-right为负值，右侧元素左移，自身不受影响</li>
 <li>margin-bottom 为负值，下方元素上移，自身不受影响</li>
@@ -699,6 +758,17 @@ display: inl">
 <ul>
 <li>百分比：200% 乘以父元素的 font-size，所以为40.</li>
 </ul>
+<h2 id="如何画一个三角形"><a href="#如何画一个三角形" class="headerlink" title="如何画一个三角形"></a>如何画一个三角形</h2><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">div</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+    <span class="token property">border-top</span><span class="token punctuation">:</span> 10px solid red<span class="token punctuation">;</span>
+    <span class="token property">border-bottom</span><span class="token punctuation">:</span> 10px solid transparent<span class="token punctuation">;</span>
+    <span class="token property">border-left</span><span class="token punctuation">:</span> 10px solid transparent<span class="token punctuation">;</span>
+    <span class="token property">border-right</span><span class="token punctuation">:</span> 10px solid transparent<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a><strong>响应式</strong></h1><h2 id="rem是什么"><a href="#rem是什么" class="headerlink" title="rem是什么"></a>rem是什么</h2><ul>
 <li>是一个长度单位，相对于根元素的长度单位，常用于响应式布局</li>
 </ul>
