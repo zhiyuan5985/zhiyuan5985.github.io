@@ -4,22 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="前端性能优化, Aaron :Chen">
-    <meta name="description" content="网页加载过程
-从输入 url 到渲染出页面的整个过程
-
-页面的资源形式
-
-HTML 代码
-媒体文件，如图片、视频等
-JS、CSS
-
-
-加载过程
-
-DNS解析：把域名变成IP地址
-进行 TCP 链接
-浏览器根据IP地址向服务器发送htttp请">
+    <meta name="keywords" content="算法模板, Aaron :Chen">
+    <meta name="description" content="
+滑动窗口框架
+void slidingWindow(String s, String t) &amp;#123;
+    Map&amp;lt;Character, Integer&amp;gt; need &amp;#x3D; new HashMap&amp;lt;&amp;gt;(">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -31,7 +20,7 @@ DNS解析：把域名变成IP地址
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>前端性能优化 | Aaron :Chen</title>
+    <title>算法模板 | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -324,12 +313,12 @@ DNS解析：把域名变成IP地址
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">前端性能优化</h1>
+                    <h1 class="description center-align post-title">算法模板</h1>
                 </div>
             </div>
         </div>
@@ -445,16 +434,16 @@ DNS解析：把域名变成IP地址
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
-                                <span class="chip bg-color">网页加载过程</span>
+                            <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+                                <span class="chip bg-color">滑动窗口</span>
                             </a>
                         
-                            <a href="/tags/%E6%89%8B%E5%86%99%E9%98%B2%E6%8A%96/">
-                                <span class="chip bg-color">手写防抖</span>
+                            <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+                                <span class="chip bg-color">快速排序</span>
                             </a>
                         
-                            <a href="/tags/%E6%89%8B%E5%86%99%E8%8A%82%E6%B5%81/">
-                                <span class="chip bg-color">手写节流</span>
+                            <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
+                                <span class="chip bg-color">单调队列</span>
                             </a>
                         
                     </div>
@@ -465,8 +454,8 @@ DNS解析：把域名变成IP地址
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JS%E5%9F%BA%E7%A1%80/" class="post-category">
-                                JS基础
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                算法与数据结构
                             </a>
                         
                     </div>
@@ -502,118 +491,82 @@ DNS解析：把域名变成IP地址
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="网页加载过程"><a href="#网页加载过程" class="headerlink" title="网页加载过程"></a>网页加载过程</h2><ul>
-<li><p>从输入 <code>url</code> 到渲染出页面的整个过程</p>
-</li>
-<li><p>页面的资源形式</p>
-<ul>
-<li>HTML 代码</li>
-<li>媒体文件，如图片、视频等</li>
-<li><code>JS、CSS</code></li>
-</ul>
-</li>
-<li><p>加载过程</p>
-<ul>
-<li><code>DNS</code>解析：把域名变成<code>IP</code>地址</li>
-<li>进行 TCP 链接</li>
-<li>浏览器根据<code>IP</code>地址向服务器发送<code>htttp</code>请求</li>
-<li>服务器处理<code>http</code>请求，并返回给浏览器</li>
-</ul>
-</li>
-<li><p>渲染过程</p>
-<ul>
-<li>根据 HTML 代码生成 DOM 树</li>
-<li>根据 <code>CSS</code> 代码生成 <code>CSSOM</code></li>
-<li>将 DOM 树和 <code>CSSOM </code>整合成 Render Tree</li>
-<li>根据 Render Tree 渲染页面</li>
-<li>遇到 <code>&lt;script&gt;</code> 则暂停渲染，优先加载并执行<code>JS </code>代码， 完成再继续</li>
-<li>直至把 Render Tree 渲染完成</li>
-</ul>
-</li>
-<li><p><code>window.onload</code> 和 <code>DOMContentLoaded</code></p>
-<ul>
-<li><code>window.onload</code>：页面的全部资源加载完才执行，包括图片、视频等</li>
-<li><code>DOMContentLoaded</code>：DOM 渲染完即可执行，此时图片、视频可能没有加载完</li>
-</ul>
-</li>
-</ul>
-<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ul>
-<li><p>原则（空间换时间）</p>
-<ul>
-<li>多使用内存、缓存或其他方法</li>
-<li>减少 CPU 计算量，减少网络加载耗时</li>
-</ul>
-</li>
-<li><p>让加载更快</p>
-<ul>
-<li>减少资源体积：压缩代码</li>
-<li>减少访问次数：合并代码、SSR 服务器端渲染（将网页和数据一起加载、一起渲染）、缓存</li>
-<li>使用更快的网络：CDN</li>
-</ul>
-</li>
-<li><p>让渲染更快</p>
-<ul>
-<li><p>CSS 放在 head， JS 放在 body 最下面</p>
-</li>
-<li><p>尽早开始执行 JS，用 <code>DOMContentLoaded</code> 触发</p>
-</li>
-<li><p>懒加载（图片懒加载，上划加载更多）</p>
-<p><img src="/images/JS/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20220301085614282.png" alt="懒加载"></p>
-</li>
-<li><p>对 DOM 查询进行缓存</p>
-<p><img src="/images/JS/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20220301085701097.png" alt="DOM查询缓存"></p>
-</li>
-<li><p>节流和防抖</p>
-</li>
-<li><p>频繁 DOM 操作，合并到一起进行插入</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="手写防抖（Debounce）"><a href="#手写防抖（Debounce）" class="headerlink" title="手写防抖（Debounce）"></a>手写防抖（<code>Debounce</code>）</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> imput1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'input1'</span><span class="token punctuation">)</span>
-<span class="token keyword">function</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> delay</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 返回的是一个函数</span>
-    <span class="token comment">// timer 是在闭包中，不对外暴露的</span>
-    <span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token keyword">null</span>
-    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 重复输入的时候，timer清空重新设置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>timer<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
-        <span class="token punctuation">&#125;</span>
-        timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 这里是箭头函数，this指向上级作用域，也就是Input这个元素</span>
-            <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span>
-            timer <span class="token operator">=</span> <span class="token keyword">null</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// 调用，相当于把debounce绑定在input对象上</span>
-input1<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'keyup'</span><span class="token punctuation">,</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>input1<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <ul>
+<li><p>滑动窗口框架</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">void slidingWindow(String s, String t) &#123;
+    Map&lt;Character, Integer&gt; need &#x3D; new HashMap&lt;&gt;();
+    Map&lt;Character, Integer&gt; window &#x3D; new HashMap&lt;&gt;();
+    int left &#x3D; 0, right &#x3D; 0;
+    int valid &#x3D; 0;
+    while (right &lt; s.size()) &#123;
+        char c &#x3D; s.charAt(right);
+        right++;
+        &#x2F;&#x2F; 进行窗口中的一系列更新
+        
+        while (左侧需要收缩的条件) &#123;
+        	char d &#x3D; s.charAt(left);
+            left++;
+            &#x2F;&#x2F; 进行窗口内数据的更新
+        &#125;
+    &#125;
+ &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="手写节流（Throttle）"><a href="#手写节流（Throttle）" class="headerlink" title="手写节流（Throttle）"></a>手写节流（Throttle）</h2><ul>
-<li>拖拽元素时要随时拿到被拖拽的位置</li>
-<li>直接用 drag 事件，则会频繁触发， 很容易导致卡顿</li>
-<li>节流：无论拖拽的速度多快，都会每隔 100 ms 触发一次</li>
-</ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> div1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'div1'</span><span class="token punctuation">)</span>
-<span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> delay</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token keyword">null</span>
-    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token keyword">if</span> <span class="token punctuation">(</span>timer<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> 
-        <span class="token punctuation">&#125;</span>
-        timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-            <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span>
-            timer <span class="token operator">=</span> <span class="token keyword">null</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-div1<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'drag'</span><span class="token punctuation">,</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>offsetX<span class="token punctuation">,</span> e<span class="token punctuation">.</span>offsetY<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>单调队列框架</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class MonotonicQueue &#123;
+	LinkedList&lt;Integer&gt; q &#x3D; new LinkedList&lt;&gt;();
+    public void push(int n) &#123;
+		while (!q.isEmpty() &amp;&amp; q.peekLast() &lt; n) &#123;
+			q.pollLast();
+        &#125;
+        q.addLast(n);
+    &#125;
+    public int max() &#123;
+        return q.getFirst();
+    &#125;
+    public void pop(int n) &#123;
+    	if (n &#x3D;&#x3D; q.getFirst()) &#123;
+			q.pollFirst();
+        &#125;    
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+</li>
+<li><p>手撕快速排序</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">void quickSort(int[] nums, int low, int high) &#123;
+    if (low &gt;&#x3D; high) return;
+    int idx &#x3D; partition(nums, low, high);
+    quickSort(nums, 0, idx - 1);
+    quickSort(nums, idx + 1, high);
+&#125;
+
+int partition(int[] nums, int low, int high) &#123;
+    if (low &#x3D;&#x3D; high)  return low;
+    int pivot &#x3D; nums[low];
+    &#x2F;&#x2F; j &#x3D; hi + 1 因为 while 中会先执行 --
+    int i &#x3D; low, j &#x3D; high + 1;
+    while (true) &#123;
+        &#x2F;&#x2F; 保证 nums[lo..i] 都小于 pivot
+        while (nums[++i] &lt; pivot) &#123;
+            if (i &#x3D;&#x3D; high)  break;
+        &#125;
+        &#x2F;&#x2F; 保证 nums[j..hi] 都大于 pivot
+        while (nums[--j] &gt; pivot) &#123;
+            if (j &#x3D;&#x3D; low)  break;
+        &#125;
+        if (i &gt;&#x3D; j)  break;
+        swap(nums, i, j);
+    &#125;
+    swap(nums, j, low);
+    return j;
+&#125;
+
+void swap(int[] nums, int i, int j) &#123;
+    int temp &#x3D; nums[i];
+    nums[i] &#x3D; nums[j];
+    nums[j] &#x3D; temp;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
 
                 
             </div>
@@ -640,7 +593,7 @@ div1<span class="token punctuation">.</span><span class="token function">addEven
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/02/25/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">https://zhiyuan5985.github.io/2022/02/25/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/02/25/%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E4%BA%9B%E9%80%9F%E8%AE%B0%E6%A8%A1%E6%9D%BF/">https://zhiyuan5985.github.io/2022/02/25/%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E4%BA%9B%E9%80%9F%E8%AE%B0%E6%A8%A1%E6%9D%BF/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -678,16 +631,16 @@ div1<span class="token punctuation">.</span><span class="token function">addEven
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
-                                    <span class="chip bg-color">网页加载过程</span>
+                                <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+                                    <span class="chip bg-color">滑动窗口</span>
                                 </a>
                             
-                                <a href="/tags/%E6%89%8B%E5%86%99%E9%98%B2%E6%8A%96/">
-                                    <span class="chip bg-color">手写防抖</span>
+                                <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+                                    <span class="chip bg-color">快速排序</span>
                                 </a>
                             
-                                <a href="/tags/%E6%89%8B%E5%86%99%E8%8A%82%E6%B5%81/">
-                                    <span class="chip bg-color">手写节流</span>
+                                <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
+                                    <span class="chip bg-color">单调队列</span>
                                 </a>
                             
                         </div>
@@ -865,13 +818,13 @@ div1<span class="token punctuation">.</span><span class="token function">addEven
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/02/25/Web%20API-Ajax/">
+                <a href="/2022/02/25/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Web-API-Ajax">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="前端性能优化">
                         
-                        <span class="card-title">Web-API-Ajax</span>
+                        <span class="card-title">前端性能优化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -899,12 +852,16 @@ div1<span class="token punctuation">.</span><span class="token function">addEven
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
-                        <span class="chip bg-color">手写Ajax</span>
+                    <a href="/tags/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
+                        <span class="chip bg-color">网页加载过程</span>
                     </a>
                     
-                    <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                        <span class="chip bg-color">同源策略</span>
+                    <a href="/tags/%E6%89%8B%E5%86%99%E9%98%B2%E6%8A%96/">
+                        <span class="chip bg-color">手写防抖</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%89%8B%E5%86%99%E8%8A%82%E6%B5%81/">
+                        <span class="chip bg-color">手写节流</span>
                     </a>
                     
                 </div>
@@ -918,13 +875,13 @@ div1<span class="token punctuation">.</span><span class="token function">addEven
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/25/%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E4%BA%9B%E9%80%9F%E8%AE%B0%E6%A8%A1%E6%9D%BF/">
+                <a href="/2022/02/24/JS%E5%9F%BA%E7%A1%80-%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%AE%A1%E7%AE%97%E3%80%81%E6%89%8B%E5%86%99%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="算法模板">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JS基础-值类型和引用类型">
                         
-                        <span class="card-title">算法模板</span>
+                        <span class="card-title">JS基础-值类型和引用类型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -935,14 +892,14 @@ div1<span class="token punctuation">.</span><span class="token function">addEven
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    算法与数据结构
+                            <a href="/categories/JS%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    JS基础
                                 </a>
                             
                             
@@ -952,16 +909,16 @@ div1<span class="token punctuation">.</span><span class="token function">addEven
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
-                        <span class="chip bg-color">滑动窗口</span>
+                    <a href="/tags/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                        <span class="chip bg-color">JS数据类型</span>
                     </a>
                     
-                    <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
-                        <span class="chip bg-color">快速排序</span>
+                    <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+                        <span class="chip bg-color">深拷贝</span>
                     </a>
                     
-                    <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
-                        <span class="chip bg-color">单调队列</span>
+                    <a href="/tags/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">
+                        <span class="chip bg-color">手撕代码</span>
                     </a>
                     
                 </div>
