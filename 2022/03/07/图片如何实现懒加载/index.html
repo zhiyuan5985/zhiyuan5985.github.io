@@ -4,25 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HTTP协议, Aaron :Chen">
-    <meta name="description" content="HTTP常见的状态码有哪些
-1xx：服务器收到请求
+    <meta name="keywords" content="图片如何实现懒加载, Aaron :Chen">
+    <meta name="description" content="
+滚动到网页下面才能浏览到图片
 
-2xx：请求成功，如 200
-
-200： 成功
-
-
-3xx：重定向，如 302
-
-301：永久重定向
-302：临时重定向
-304：资源在本地还有效
-
-
-4xx：客户端错误，如 404
-
-">
+法一：判断图片到视窗顶部的位置和视窗高度的对比
+const images = document.querySelectorAll(&#39;img&#39;)
+window.addEventListner(&#39;scroll&#39;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HTTP协议 | Aaron :Chen</title>
+    <title>图片如何实现懒加载 | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -327,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HTTP协议</h1>
+                    <h1 class="description center-align post-title">图片如何实现懒加载</h1>
                 </div>
             </div>
         </div>
@@ -448,8 +436,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HTTP/">
-                                <span class="chip bg-color">HTTP</span>
+                            <a href="/tags/%E6%87%92%E5%8A%A0%E8%BD%BD/">
+                                <span class="chip bg-color">懒加载</span>
                             </a>
                         
                     </div>
@@ -460,8 +448,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/HTTP/" class="post-category">
-                                HTTP
+                            <a href="/categories/%E6%87%92%E5%8A%A0%E8%BD%BD/" class="post-category">
+                                懒加载
                             </a>
                         
                     </div>
@@ -473,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-28
+                    2022-03-07
                 </div>
                 
 
@@ -497,201 +485,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="HTTP常见的状态码有哪些"><a href="#HTTP常见的状态码有哪些" class="headerlink" title="HTTP常见的状态码有哪些"></a>HTTP常见的状态码有哪些</h2><ul>
-<li><p><code>1xx</code>：服务器收到请求</p>
+                <ul>
+<li><p>滚动到网页下面才能浏览到图片</p>
 </li>
-<li><p><code>2xx</code>：请求成功，如 200</p>
-<ul>
-<li><code>200</code>： 成功</li>
-</ul>
+<li><p>法一：判断图片到视窗顶部的位置和视窗高度的对比</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> images <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListner</span><span class="token punctuation">(</span><span class="token string">'scroll'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    images<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">img</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">const</span> imgTop <span class="token operator">=</span> img<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>top
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>imgTop <span class="token operator">&lt;</span> window<span class="token punctuation">.</span>innerHeight<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 要先把 src 改为 data-src</span>
+            <span class="token keyword">const</span> data_src <span class="token operator">=</span> img<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">'data-src'</span><span class="token punctuation">)</span>
+            img<span class="token punctuation">.</span><span class="token function">setAttribut</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">,</span> data_src<span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p><code>3xx</code>：重定向，如 302</p>
-<ul>
-<li><code>301</code>：永久重定向</li>
-<li><code>302</code>：临时重定向</li>
-<li><code>304</code>：资源在本地还有效</li>
-</ul>
-</li>
-<li><p><code>4xx</code>：客户端错误，如 404</p>
-<ul>
-<li><code>400</code>：请求的字段类型与后台不一致，请求无效</li>
-<li><code>401</code> ：需要用户权限</li>
-<li><code>403</code>：没有权限</li>
-<li><code>404</code>：资源未找到</li>
-</ul>
-</li>
-<li><p><code>5xx</code>：服务端错误，如 500</p>
-<ul>
-<li><code>500</code>：服务器错误</li>
-<li><code>504</code>：网关超时</li>
-</ul>
-</li>
-</ul>
-<h2 id="HTTP-Methods"><a href="#HTTP-Methods" class="headerlink" title="HTTP Methods"></a>HTTP Methods</h2><ul>
-<li>传统的 API 设计：把每个 url 当做一个功能<ul>
-<li>get  获取数据</li>
-<li>post  新建数据</li>
-<li>patch &#x2F; put  更新数据</li>
-<li>delete  删除数据</li>
-</ul>
-</li>
-<li>Restful API ：把 每个 url 当做一个唯一资源</li>
-</ul>
-<h2 id="HTTP-Headers"><a href="#HTTP-Headers" class="headerlink" title="HTTP Headers"></a>HTTP Headers</h2><ul>
-<li>Request Headers<ul>
-<li>Accept 浏览器可接收的数据格式</li>
-<li>Accept-Encoding ：浏览器可接收的压缩算法，如 <code>gzip</code></li>
-<li>Accept-Language： 浏览器可接收的语言，如 <code>zh-CN</code></li>
-<li>connection： keep-alive 一次TCP连接重复使用</li>
-<li>cookie</li>
-<li>Host</li>
-<li>User-Agent：浏览器信息</li>
-</ul>
-</li>
-<li>Response Headers<ul>
-<li>Content-type ： 返回的数据类型</li>
-<li>Content-length ：返回数据的大小，多少字节</li>
-<li>Content-Encoding：返回数据的压缩算法</li>
-<li>set-Cookie：服务端改 cookie</li>
-</ul>
-</li>
-<li>缓存相关的 Headers<ul>
-<li>Cache-Control</li>
-<li>Last-Modified</li>
-<li><code>Etag</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="HTTP-缓存"><a href="#HTTP-缓存" class="headerlink" title="HTTP 缓存"></a>HTTP 缓存</h2><ul>
-<li><p>哪些资源可以被缓存？ </p>
-<ul>
-<li>—— 静态资源<code> (js、css、img)</code></li>
-</ul>
-</li>
-<li><p>强制缓存</p>
-<p><img src="/images/JS/HTTP/image-20220228155331241.png" alt="强制缓存策略"></p>
-</li>
-<li><p>cache-control 的值</p>
-<ul>
-<li>max-age ： 设置缓存的过期时间</li>
-<li>no-cache：不用强制缓存</li>
-<li>no-store：不用缓存</li>
-</ul>
-</li>
-<li><p>Expires</p>
-<ul>
-<li><p>同在 response headers 里</p>
-</li>
-<li><p>已被 cache-control 替代</p>
-</li>
-</ul>
-</li>
-<li><p>协商缓存</p>
-<ul>
-<li><p>服务器端缓存策略  （服务端来判断这个文件是否需要缓存）</p>
-</li>
-<li><p>服务器判断客户端资源，是否和服务端资源一样</p>
-</li>
-<li><p>一致则返回 304，否则返回 200 和最新的资源</p>
-<p><img src="/images/JS/HTTP/image-20220228155427147.png" alt="协商缓存策略"></p>
-</li>
-</ul>
-</li>
-<li><p>资源标识（两种）</p>
-<ul>
-<li>Last-Modified 资源的最后修改时间， 只能精确到秒级</li>
-<li><code>Etag</code>  资源的唯一标志(一个唯一字符串)，优先使用 <code>Etag</code></li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/JS/HTTP/image-20220228155447928.png" alt="缓存全过程"></p>
-<ul>
-<li>三种刷新操作<ul>
-<li>正常操作（访问链接）：强制缓存有效，协商缓存有效</li>
-<li>手动刷新（<code>f5、cmd+r</code>）：强制缓存失效， 协商缓存有效</li>
-<li>强制刷新（<code>ctrl+f5 / cmd+shift+r</code>）:强制缓存失效，协商缓存失效</li>
-</ul>
-</li>
-</ul>
-<h2 id="HTTPS协议"><a href="#HTTPS协议" class="headerlink" title="HTTPS协议"></a><code>HTTPS</code>协议</h2><ul>
-<li><p>HTTP 和 <code>HTTPS </code>的区别</p>
-<ul>
-<li>HTTP 是明文传输，敏感信息容易被中间劫持</li>
-<li><code>HTTPS = HTTP + 加密</code>，劫持了也无法解密</li>
-<li>现代浏览器开始强制 https 协议</li>
-</ul>
-</li>
-<li><p>加密方式</p>
-<ul>
-<li>对称加密：一个 key 同时负责加密和解密 </li>
-<li>非对称加密：一对key，A加密后，用B解密；B加密后，用A解密</li>
-</ul>
-</li>
-<li><p><code>https</code> 证书</p>
-<ul>
-<li>浏览器校验证书，防止中间人攻击</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/JS/HTTP/image-20220228155516384.png" alt="HTTPS全过程"></p>
-<h2 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h2><p><img src="/images/JS/HTTP/image-20220304215040786.png" alt="TCP三次握手"></p>
-<ul>
-<li><p>A 向 B 发送同步请求</p>
-</li>
-<li><p>B 回复同步请求应答</p>
-</li>
-<li><p>A 回复ACK 确认</p>
-<p><strong>通过以上的三次握手来确认 A 和 B 都有发送和接收的能力</strong></p>
-</li>
-</ul>
-<h2 id="TCP-和-UDP-的区别"><a href="#TCP-和-UDP-的区别" class="headerlink" title="TCP 和 UDP 的区别"></a>TCP 和 UDP 的区别</h2><ul>
-<li>TCP 是面向连接的，UDP 是无连接的，不需要先建立链接</li>
-<li>TCP 提供可靠的服务，数据无差错不丢失的按序到达；UDP 尽最大努力交付，即不保证可靠交付</li>
-<li>TCP 是面向字节流， UDP 面向报文</li>
-</ul>
-<h2 id="Get-和-Post-的区别"><a href="#Get-和-Post-的区别" class="headerlink" title="Get 和 Post 的区别"></a>Get 和 Post 的区别</h2><ul>
-<li>get 参数通过 url 来传递， post 放在 request body 当中，所以 get 请求不够安全</li>
-<li>get 请求的 url 是有长度限制的，而 post 没有</li>
-<li>get 请求的参数会保存在浏览记录里， 而 post 不会</li>
-</ul>
-<h2 id="什么是-webSocket"><a href="#什么是-webSocket" class="headerlink" title="什么是 webSocket"></a>什么是 webSocket</h2><ul>
-<li>是 HTML5 中的协议，支持持久连续，而 http 协议不支持持久连续</li>
-</ul>
-<h2 id="Fetch-发送两次请求的原因"><a href="#Fetch-发送两次请求的原因" class="headerlink" title="Fetch 发送两次请求的原因"></a>Fetch 发送两次请求的原因</h2><ul>
-<li>fetch 发送 post 请求的时候，导致 fetch 第一次发送一个 Options 请求，询问服务器是否支持修改的请求头，如果支持，则在第二次发送真正的请求</li>
-</ul>
-<h2 id="Cookie、-sessionStorage、-localStorage-的区别"><a href="#Cookie、-sessionStorage、-localStorage-的区别" class="headerlink" title="Cookie、 sessionStorage、 localStorage 的区别"></a>Cookie、 sessionStorage、 localStorage 的区别</h2><ul>
-<li>localStorage和sessionStorage特性<ul>
-<li>HTML5 专门为存储而设计，最大可存 5M</li>
-<li>API 简单易用 setItem， getItem</li>
-<li>不会随着 http 请求发送</li>
-<li>localStorage <strong>数据会永久存储，除非代码删除或者手动删除</strong></li>
-<li>sessionStorage <strong>数据只存在于当前会话，浏览器关闭则清空</strong></li>
-</ul>
-</li>
-<li>Cookie 只有 4KB 的容量</li>
-</ul>
-<h2 id="Web-安全"><a href="#Web-安全" class="headerlink" title="Web 安全"></a>Web 安全</h2><ul>
-<li><p>XSS 跨域请求攻击</p>
-<ul>
-<li>插入脚本，获取 cookie， 发送到我的服务器（服务器配合跨域）</li>
-<li>预防：前端在网页显示的时候，把 <code>&lt;</code> 和 <code>&gt;</code> 替换掉</li>
-</ul>
-</li>
-<li><p>XSRF 跨站请求预防</p>
-<p><img src="/images/JS/HTTP/image-20220305155414633.png" alt="XSRF攻击1"></p>
-<p><img src="/images/JS/HTTP/image-20220305155536674.png" alt="XSRF攻击2"></p>
-<ul>
-<li>使用 Post 接口</li>
-<li>增加验证，例如密码，短信验证码，指纹等等</li>
-</ul>
-</li>
-</ul>
-<h2 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP 2.0"></a>HTTP 2.0</h2><ul>
-<li>HTTP 2.0相比于 HTTP 1.X，可以说是大幅度提高了 web 的性能。</li>
-<li>二进制传输：在之前的 HTTP 版本中，我们是通过文本的方式传输数据。在 HTTP 2.0 中引入了新的编码机制，所有传输的数据都会被分割，并采用二进制格式编码。</li>
-<li>多路复用：就是在一个 TCP 连接中可以发送多条请求</li>
-<li>Header压缩：减少头部开销</li>
+<li><p><code>intersectionObserver</code></p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> observer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntersectionObserver</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span>  <span class="token comment">// 看见了触发，看不见不触发</span>
+observer<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span><span class="token constant">DOM</span>节点<span class="token punctuation">)</span>     <span class="token comment">// 观察到DOM节点</span>
+observer<span class="token punctuation">.</span><span class="token function">unobserver</span><span class="token punctuation">(</span><span class="token constant">DOM</span>节点<span class="token punctuation">)</span>	<span class="token comment">// 未观察到DOM节点</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>完整代码</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> images <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span>    <span class="token comment">// 获取img元素</span>
+<span class="token keyword">const</span> <span class="token function-variable function">callback</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">entries</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>                    <span class="token comment">// 数组里面保存了图片位置</span>
+	entries<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">entry</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">const</span> image <span class="token operator">=</span> entry<span class="token punctuation">.</span>target
+        <span class="token keyword">const</span> data_src <span class="token operator">=</span> image<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">'data-src'</span><span class="token punctuation">)</span>
+        image<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">,</span> data_src<span class="token punctuation">)</span>
+        observer<span class="token punctuation">.</span><span class="token function">unobserve</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span>                  <span class="token comment">// 不再进行观察 </span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">const</span> observer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntersectionObserver</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span> 
+images<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span> <span class="token parameter">image</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    observer<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 
                 
@@ -719,7 +546,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/02/28/HTTP/">https://zhiyuan5985.github.io/2022/02/28/HTTP/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/03/07/%E5%9B%BE%E7%89%87%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%87%92%E5%8A%A0%E8%BD%BD/">https://zhiyuan5985.github.io/2022/03/07/%E5%9B%BE%E7%89%87%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%87%92%E5%8A%A0%E8%BD%BD/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -757,8 +584,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/HTTP/">
-                                    <span class="chip bg-color">HTTP</span>
+                                <a href="/tags/%E6%87%92%E5%8A%A0%E8%BD%BD/">
+                                    <span class="chip bg-color">懒加载</span>
                                 </a>
                             
                         </div>
@@ -936,13 +763,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/03/07/%E5%9B%BE%E7%89%87%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%87%92%E5%8A%A0%E8%BD%BD/">
+                <a href="/2022/03/07/%E9%9D%A2%E8%AF%95%E7%A7%AF%E7%B4%AF%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="图片如何实现懒加载">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="面试积累日记">
                         
-                        <span class="card-title">图片如何实现懒加载</span>
+                        <span class="card-title">面试积累日记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -959,8 +786,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%87%92%E5%8A%A0%E8%BD%BD/" class="post-category">
-                                    懒加载
+                            <a href="/categories/%E9%9D%A2%E8%AF%95%E6%97%A5%E8%AE%B0/" class="post-category">
+                                    面试日记
                                 </a>
                             
                             
@@ -970,8 +797,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%87%92%E5%8A%A0%E8%BD%BD/">
-                        <span class="chip bg-color">懒加载</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95%E6%97%A5%E8%AE%B0/">
+                        <span class="chip bg-color">面试日记</span>
                     </a>
                     
                 </div>
@@ -985,13 +812,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/25/Web%20API-Ajax/">
+                <a href="/2022/02/28/HTTP/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Web-API-Ajax">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="HTTP协议">
                         
-                        <span class="card-title">Web-API-Ajax</span>
+                        <span class="card-title">HTTP协议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1002,14 +829,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JS%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    JS基础
+                            <a href="/categories/HTTP/" class="post-category">
+                                    HTTP
                                 </a>
                             
                             
@@ -1019,12 +846,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
-                        <span class="chip bg-color">手写Ajax</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                        <span class="chip bg-color">同源策略</span>
+                    <a href="/tags/HTTP/">
+                        <span class="chip bg-color">HTTP</span>
                     </a>
                     
                 </div>

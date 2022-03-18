@@ -565,7 +565,34 @@ void swap(int[] nums, int i, int j) &#123;
     int temp &#x3D; nums[i];
     nums[i] &#x3D; nums[j];
     nums[j] &#x3D; temp;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</li>
+<li><p>差分数组</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Difference &#123;
+    private int[] diff;
+    public Difference(int[] nums) &#123;
+        diff &#x3D; new int[nums.length];
+        diff[0] &#x3D; nums[0];
+        fior (int i &#x3D; 1; i &lt; nums.length; i++) &#123;
+            diff[i] &#x3D; nums[i] - nums[i - 1];
+        &#125;
+    &#125;
+    public void increment(int i, int j, int val) &#123;
+		diff[i] +&#x3D; val;
+        if (j + 1 &lt; diff.length) &#123;
+            diff[j + 1] -&#x3D; val;
+        &#125;
+    &#125;
+    public int[] getResult() &#123;
+        int[] res &#x3D; new int[diff.length];
+        res[0] &#x3D; diff[0];
+        for (int i &#x3D; 1; i &lt; diff.length; i++) &#123;
+            res[i] &#x3D; res[i - 1] + diff[i];
+        &#125;
+        return res;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 
                 
