@@ -4,12 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Web-API-Ajax, Aaron :Chen">
-    <meta name="description" content="Ajax
-手写简易 AJax
-function ajax(url, successFn) &amp;#123;
-    const xhr = new XMLHttpRequest()
-    xhr.open(&#34;GET&#34;, &#34;/api&#34;, fal">
+    <meta name="keywords" content="Vue基础知识, Aaron :Chen">
+    <meta name="description" content="基础知识
+v-html：设置 html 的值，会覆盖子元素，但是存在 xss 风险
+
+xss攻击：在 html 当中插入script，会加载脚本
+解决方法：（1）将&amp;lt;&amp;gt;换成html特殊编码  （2） 使用 DOM Purify ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +21,7 @@ function ajax(url, successFn) &amp;#123;
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Web-API-Ajax | Aaron :Chen</title>
+    <title>Vue基础知识 | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -314,12 +314,12 @@ function ajax(url, successFn) &amp;#123;
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Web-API-Ajax</h1>
+                    <h1 class="description center-align post-title">Vue基础知识</h1>
                 </div>
             </div>
         </div>
@@ -435,12 +435,8 @@ function ajax(url, successFn) &amp;#123;
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
-                                <span class="chip bg-color">手写Ajax</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                                <span class="chip bg-color">同源策略</span>
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
                             </a>
                         
                     </div>
@@ -451,8 +447,8 @@ function ajax(url, successFn) &amp;#123;
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JS%E5%9F%BA%E7%A1%80/" class="post-category">
-                                JS基础
+                            <a href="/categories/Vue/" class="post-category">
+                                Vue
                             </a>
                         
                     </div>
@@ -464,7 +460,7 @@ function ajax(url, successFn) &amp;#123;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-25
+                    2022-02-28
                 </div>
                 
 
@@ -488,83 +484,435 @@ function ajax(url, successFn) &amp;#123;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
-<li><p>手写简易 <code>AJax</code></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> successFn</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-    xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 这里的函数异步执行</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token function">successFn</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'其他情况'</span><span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-    xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>	
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>使用 Promise </p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-   	    xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 这里的函数异步执行</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">resolve</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'404 Not Found'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
-    	<span class="token punctuation">&#125;</span>
-        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>	
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-</li>
-<li><p><code>readyState </code></p>
+                <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
+<li><p><code>v-html</code>：设置 <code>html</code> 的值，会覆盖子元素，但是存在 xss 风险</p>
 <ul>
-<li>0 - （未初始化） 还没有调用 send 方法</li>
-<li>1 - （载入） 已调用 send() 方法， 正在发送请求</li>
-<li>2 - （载入完成） send() 方法执行完成，已经接收到全部响应内容</li>
-<li>3 - （交互）正在解析响应内容</li>
-<li><strong>4 - （完成）响应内容解析完成，可以在客户端调用</strong></li>
+<li><code>xss</code>攻击：在 <code>html</code> 当中插入script，会加载脚本</li>
+<li>解决方法：（1）将&lt;&gt;换成html特殊编码  （2） 使用 DOM Purify 插件绕过 <code>xss</code>攻击</li>
 </ul>
 </li>
-<li><p>status</p>
+<li><p>computed 和 watch</p>
 <ul>
-<li><code>301</code> 永久重定向</li>
-<li><code>302 </code>临时重定向</li>
-<li><code>304 </code>读本地缓存</li>
-<li><code>403 </code>未授权</li>
-<li><code>404 </code>未找到</li>
-<li><code>5xx </code>服务器异常</li>
+<li>computed 有缓存，data 不变则不会重新计算</li>
+</ul>
+</li>
+<li><p>watch 如何深度监听</p>
+<ul>
+<li><p>假如有一个数据</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">data() &#123;
+	return &#123;
+		name: &quot;zhisd&quot;,
+		info: &#123;
+			city: &#39;beijing&#39;
+		&#125;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>正常的watch写法</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">watch: &#123;
+	name(oldVal, val) &#123;
+		console.log(&#39;watch name&#39;, oldVal, val)
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>深度监听</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">watch: &#123;
+	info: &#123;
+		handler(oldVal, val) &#123;
+			console.log(&#39;watch info&#39;, oldVal, val)
+		&#125;
+		deep: true
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>watch 监听引用类型，拿不到 <code>oldVal</code></p>
+</li>
+<li><p>v-if 和 v-show</p>
+<ul>
+<li>v-if ： v-if 为 false 会销毁DOM节点，更新不频繁的时候使用</li>
+<li>v-show ： v-show 会把 display 设置为 none，不销毁节点，频繁切换的时候使用</li>
 </ul>
 </li>
 </ul>
-<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><ul>
-<li>Ajax 请求时， 浏览器要求当前网页和 server 必须同源</li>
-<li>同源：协议、域名、端口，三者必须一致</li>
-<li>但是 图片、<code>CSS</code>、<code>JS</code> 可以无视同源策略</li>
+</li>
+<li><p>v-for 遍历对象  </p>
+<ul>
+<li><p>遍历数组： </p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;li v-for&#x3D;&quot;(item, index) in arr&quot; :key&#x3D;&quot;item.id&quot;&gt;
+    &#123;&#123;index&#125;&#125; -&#123;&#123;item.id&#125;&#125; -&#123;&#123;item.title&#125;&#125;
+&lt;&#x2F;li&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>遍历对象</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;li v-for&#x3D;&quot;(val, key, index) in obj&quot; :key&#x3D;&quot;key&quot;&gt;
+    &#123;&#123;index&#125;&#125; -&#123;&#123;key&#125;&#125; -&#123;&#123;val.title&#125;&#125;
+&lt;&#x2F;li&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>key 的重要性</p>
+</li>
+<li><p>v-for 和 v-if 是不能一起使用的</p>
+<ul>
+<li><p>v-for 比 v-if 计算优先级要高一些，会先进行 v-for 生成元素，再对元素进行 v-if 判断</p>
+<p>（1）建议先使用计算属性先对对象进行过滤，再对计算属性遍历</p>
+<p>（2）将 v-if 放到循环列表元素的父元素中</p>
+</li>
 </ul>
-<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><ul>
-<li>所有的跨域，都需要经过 server 端允许和配合</li>
-<li>未经 server 端允许就实现跨域，说明浏览器有漏洞</li>
+</li>
 </ul>
-<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a><code>JSONP</code></h2><ul>
-<li>服务器可以任意动态拼接数据返回</li>
-<li>script 可以绕过跨域</li>
-<li>所有 script 可以获得跨域数据，只要服务器愿意</li>
+<h2 id="Vue-组件的使用"><a href="#Vue-组件的使用" class="headerlink" title="Vue  组件的使用"></a><code>Vue </code> 组件的使用</h2><ul>
+<li><p>props 和 $emit</p>
+<ul>
+<li>父组件向子组件传递数据</li>
+<li>子组件向父组件触发事件</li>
 </ul>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
-<li>JQuery</li>
-<li>Fetch</li>
-<li>Axios</li>
+</li>
+<li><p>兄弟组件通信</p>
+<ul>
+<li>eventBus 自定义事件通信，eventBus 是一个 vue 实例</li>
+<li>eventBus.$emit(), eventBus.$on()</li>
+</ul>
+</li>
+<li><p>组件生命周期</p>
+<ul>
+<li><p>挂载阶段</p>
+<ul>
+<li>beforeCreate          &#x2F;&#x2F; 在 beforeCreate 中， data 和 methods 中的数据都还没有初始化</li>
+<li>Created                   &#x2F;&#x2F; 页面还没有渲染，只是初始化 vue 的实例， data 和 methods 被初始化</li>
+<li>beforeMount            &#x2F;&#x2F; 组件编译模板，并没有把页面中的元素挂载</li>
+<li>Mounted                  &#x2F;&#x2F; 组件在网页上渲染挂载完成</li>
+</ul>
+</li>
+<li><p>更新阶段</p>
+<ul>
+<li>beforeUpdate          &#x2F;&#x2F; 当 data 改变的时候触发，数据被更新，但是还没有改变页面</li>
+<li>updated                   &#x2F;&#x2F; 重新渲染虚拟dom， 渲染到真实的页面</li>
+</ul>
+</li>
+<li><p>销毁阶段</p>
+<ul>
+<li><p>beforeDestroy          &#x2F;&#x2F; vue实例进行到销毁阶段，所有的data和methods，过滤器等都还处于可用状态，                           </p>
+<p>​                                    即将销毁</p>
+</li>
+<li><p>destroyed                 &#x2F;&#x2F; 销毁完毕</p>
+</li>
+</ul>
+</li>
+<li><p>父子组件的生命周期 </p>
+<ul>
+<li><p>初始化实例的时候，先父组件再子组件      created</p>
+</li>
+<li><p>渲染的时候，先渲染子组件再渲染父组件   mounted</p>
+<p>即： 父组件 created &#x3D;&#x3D;&gt;  子组件 created  &#x3D;&#x3D;&gt; 子组件 mounted &#x3D;&#x3D;&gt; 父组件 mounted</p>
+</li>
+<li><p>beforeUpdate 先父组件再子组件</p>
+</li>
+<li><p>updated 先子组件再父组件</p>
+<p>即：父组件 beforeUpdate &#x3D;&#x3D;&gt;  子组件 beforeUpdate  &#x3D;&#x3D;&gt; 子组件 updated &#x3D;&#x3D;&gt; 父组件 updated</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Vue-高级特性"><a href="#Vue-高级特性" class="headerlink" title="Vue 高级特性"></a><code>Vue </code>高级特性</h2><ul>
+<li><p><strong>自定义 v-model</strong></p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+	&lt;input  type&#x3D;&quot;text&quot;
+           :value&#x3D;&quot;text&quot;
+           @input&#x3D;&quot;$emit(&#39;change&#39;, $event.target.value)&quot;&gt;
+    &lt;&#x2F;input&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+    export default &#123;
+        model: &#123;
+            prop: &#39;text&#39;,
+            event: &#39;change&#39;
+        &#125;,
+        props: &#123;
+            text: String,
+            default() &#123;
+                return &#39;&#39;
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>**<code>$nextTick</code>**（如果想要在data改变之后，立刻拿到DOM元素）</p>
+<ul>
+<li><p><code>Vue</code>是异步渲染</p>
+</li>
+<li><p>data 改变之后， DOM 不会立即渲染</p>
+</li>
+<li><p><code>$nextTick </code> 会在 DOM 渲染之后被触发， 以获取最新的 DOM 节点</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+	&lt;ul ref&#x3D;&quot;ul1&quot;&gt;
+        &lt;li v-for&#x3D;&quot;(item, index) in list&quot; :key&#x3D;&quot;index&quot;&gt;
+    		&#123;&#123;item&#125;&#125;
+    	&lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+	&lt;button @click-&quot;addItem&quot;&gt;
+        添加一项
+    &lt;&#x2F;button&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+    export default &#123;
+        data() &#123;
+            return &#123;
+                list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+            &#125;
+        &#125;,
+        methods: &#123;
+            addItem() &#123;
+                this.list.push(&#96;$&#123;Date.now()&#125;&#96;)
+                this.list.push(&#96;$&#123;Date.now()&#125;&#96;)
+                this.list.push(&#96;$&#123;Date.now()&#125;&#96;)
+                
+                &#x2F;&#x2F; 获取 DOM 节点
+                const ulElem &#x3D; this.$refs.ul1        
+                &#x2F;&#x2F; data改变的时候，dom不会立刻渲染，所以不会拿到刚改好的 元素，而是上一次的
+                console.log(ulElem.childNodes.length)
+                &#x2F;&#x2F; 因此在外面包一层 nextTick, 修改为
+                &#x2F;&#x2F; 待 DOM 渲染完再回调
+                this.$nextTick(() &#x3D;&gt; &#123;
+                    const ulElem &#x3D; this.$refs.ul1       
+                	console.log(ulElem.childNodes.length)
+                &#125;) 
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+<li><p><strong>slot</strong></p>
+<ul>
+<li><p>基本使用</p>
+<ul>
+<li><p>slot 标签表示了父组件向子组件插入内容</p>
+</li>
+<li><p>&#96;&#96;&#96;vue<br>&#x2F;&#x2F; 父组件调用</p>
+<SlotDemo :url="website.url">
+    
+</SlotDemo>
+<pre class="line-numbers language-none"><code class="language-none">
+- &#96;&#96;&#96;vue
+  &#x2F;&#x2F; 子组件调用
+  &lt;template&gt;
+  	&lt;a :href&#x3D;&quot;url&quot;&gt;
+      	&lt;slot&gt;
+      		插槽内的默认内容，父组件传入就覆盖掉
+      	&lt;&#x2F;slot&gt;
+      &lt;&#x2F;a&gt;
+  &lt;&#x2F;template&gt;
+  &lt;script&gt;
+  export default &#123;
+      props: [&#39;url&#39;]
+  &#125;
+  &lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+<li><p>作用域插槽：(把子组件的数据扔出来给父组件)</p>
+<ul>
+<li>&#96;&#96;&#96;vue<br>&#x2F;&#x2F; 父组件调用<SlotDemo :url="website.url">
+    <template v-slot="slotProps">
+        
+    </template>
+</SlotDemo>
+<pre class="line-numbers language-none"><code class="language-none">
+- &#96;&#96;&#96;vue
+  &#x2F;&#x2F; 子组件调用
+  &lt;template&gt;
+  	&lt;a :href&#x3D;&quot;url&quot;&gt;
+      	&lt;slot :slotData&#x3D;&quot;website&quot;&gt;
+      		&#123;&#123;website.title&#125;&#125;
+      	&lt;&#x2F;slot&gt;
+      &lt;&#x2F;a&gt;
+  &lt;&#x2F;template&gt;
+  &lt;script&gt;
+  export default &#123;
+      props: [&#39;url&#39;],
+      data() &#123;
+          return &#123;
+              website: &#123;
+                  url: &#39;http:&#x2F;&#x2F;wangEditor.com&#39;,
+                  title: &#39;WangEditor&#39;
+              &#125;
+          &#125;
+      &#125;
+  &#125;
+  &lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+<li><p>具名插槽 （解决多个插槽的情况）</p>
+<ul>
+<li>&#96;&#96;&#96;vue<br>&#x2F;&#x2F; 父组件调用<SlotDemo :url="website.url">
+    <template v-slot: header>
+        <h1> 将插入header slot中</h1>
+    </template>
+</SlotDemo>
+<pre class="line-numbers language-none"><code class="language-none">
+- &#96;&#96;&#96;vue
+  &#x2F;&#x2F; 子组件调用
+  &lt;template&gt;
+  	&lt;a :href&#x3D;&quot;url&quot;&gt;
+      	&lt;slot name&#x3D;&quot;header&quot;&gt;
+      		
+      	&lt;&#x2F;slot&gt;
+      &lt;&#x2F;a&gt;
+  &lt;&#x2F;template&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>动态组件</strong> </p>
+<ul>
+<li><p>动态组件（不确定组件具体的结构，要根据数据去确定组件的结构）,例如一个新闻页既包含图片又包含文本，可能顺序是不固定的。</p>
+<ul>
+<li><p><code>:is=&quot;component-name&quot;</code> 的用法</p>
+</li>
+<li><p>需要根据数据，动态渲染的场景</p>
+</li>
+<li><p>&#96;&#96;&#96;vue</p>
+<template>
+     <-- 直接根据 newsData 里面的数据顺序渲染组件 !-->
+    <div v-for="(val, key) in newsData" :key="key">
+        <component :is="val.type"/>
+    </div>
+</template>
+<script>
+export default {
+    components: {
+        NextTick           // 引入的新组件
+    },
+    data() {
+        return {
+            // 模拟新闻页中的组件名称
+            newsData: [
+                1: {
+                    type:'text'
+                },
+                2: {
+                    type:'image'
+                },
+                3: {
+                    type:'news'
+                },
+            ] 
+        }
+    }
+}
+</script>
+<pre class="line-numbers language-none"><code class="language-none">
+- **异步组件  （一些比较大的组件，该怎么异步加载）**  **（ vue 常见的性能优化）**
+
+  - import() 函数
+
+  - 按需加载，异步加载大组件
+
+  - &#96;&#96;&#96;vue
+    &lt;template&gt;
+         &lt;-- 异步组件 !--&gt;
+    	&lt;FormDemo v-if&#x3D;&quot;showFormDemo&quot;&#x2F;&gt;
+         &lt;-- 按了按钮之后才加载异步组件 !--&gt;
+        &lt;button @click&#x3D;&quot;showFormDemo &#x3D; true&quot;&gt;
+            show form demo
+        &lt;&#x2F;button&gt;
+    &lt;&#x2F;template&gt;
+    &lt;script&gt;
+    &#x2F;&#x2F;  import 组件 from &#39;xxx&#39;  --&gt; 同步加载组件的方式
+        FormDemo: () &#x3D;&gt; import(&#39;..&#x2F;BaseUse&#x2F;FormDemo&#39;)
+    &lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>keep-alive</strong> <strong>（vue 常见的性能优化）</strong></p>
+<ul>
+<li>当频繁切换，但不需要重复渲染的时候，就需要用到 keep-alive</li>
+<li>每次动态切换的时候，都会销毁原组件，再创建新组件</li>
+<li>只需要在多个切换组件外部加一个 <keep-alive> 即可</li>
+<li>与 v-show 相比较：<ul>
+<li>v-show 是从 css 的 display 角度进行元素的隐藏，如果标签很简单，相邻组件不是很多，可以用 v-show</li>
+<li>keep-alive 是从 vue 层级进行控制，如果标签复杂一些，切换的元素比较多，就要用 keep-alive</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong><code>mixin</code></strong> （多个组件有相同的逻辑，抽离出来）</p>
+<ul>
+<li>多个组件共有的逻辑，把他抽离出来，通过mixin混合进来，改的时候改一个就行</li>
+</ul>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;script&gt;
+import myMixin from &#39;.&#x2F;mixin&#39;
+    export default &#123;
+        mixins: [myMixin],     &#x2F;&#x2F; 可以引入多个，会自动融合
+        data() &#123;
+            return &#123;
+                name: &#39;双越&#39;,
+                major: &#39;web前端&#39;
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>缺点： <ul>
+<li>变量来源不明确， 不利于阅读</li>
+<li>多个 mixin 可能会造成命名冲突</li>
+<li>mixin 和组件可能出现多对多的关系，复杂度较高</li>
+</ul>
+</li>
+</ul>
+<h2 id="VueX-使用"><a href="#VueX-使用" class="headerlink" title="VueX 使用"></a>VueX 使用</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><img src="D:\codeMark\hexoBlog\source\images\JS\vue基本使用\image-20220402135939740.png" alt="image-20220402135939740"></p>
+<ul>
+<li>state</li>
+<li>getters</li>
+<li>action</li>
+<li>mutation</li>
+</ul>
+<h3 id="用于-Vue-组件"><a href="#用于-Vue-组件" class="headerlink" title="用于 Vue 组件"></a>用于 Vue 组件</h3><ul>
+<li>dispatch</li>
+<li>commit</li>
+<li>mapState</li>
+<li>mapGetters</li>
+<li>mapActions</li>
+<li>mapMutations</li>
+</ul>
+</li>
+</ul>
+<h2 id="Vue-router-的使用"><a href="#Vue-router-的使用" class="headerlink" title="Vue-router 的使用"></a>Vue-router 的使用</h2><ul>
+<li><p>路由模式（Hash、H5 history模式）</p>
+<ul>
+<li><p>Hash模式  带有#，不需要 server 端支持</p>
+</li>
+<li><p>H5 History模式，需要 server 端支持 </p>
+</li>
+<li><p>基本配置：</p>
+<ul>
+<li><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            path<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+            name<span class="token punctuation">:</span> <span class="token string">'HelloWord'</span><span class="token punctuation">,</span>
+            component<span class="token punctuation">:</span> HelloWord<span class="token punctuation">,</span>
+            children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>path<span class="token punctuation">:</span> <span class="token string">"login"</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> login<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>path<span class="token punctuation">:</span> <span class="token string">"register"</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> register<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">]</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">]</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><p>懒加载</p>
+<p>component 里面使用 <code>() =&gt; import(&#39;xxx&#39;)</code> ， 使用 import 函数异步加载</p>
+</li>
+</ul>
+</li>
 </ul>
 
                 
@@ -592,7 +940,7 @@ function ajax(url, successFn) &amp;#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/02/25/Web%20API-Ajax/">https://zhiyuan5985.github.io/2022/02/25/Web%20API-Ajax/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/02/28/Vue%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">https://zhiyuan5985.github.io/2022/02/28/Vue%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -630,12 +978,8 @@ function ajax(url, successFn) &amp;#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
-                                    <span class="chip bg-color">手写Ajax</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                                    <span class="chip bg-color">同源策略</span>
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
                                 </a>
                             
                         </div>
@@ -813,13 +1157,13 @@ function ajax(url, successFn) &amp;#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/02/28/Vue%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+                <a href="/2022/02/28/vue/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Vue基础知识">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Vue框架面试知识点">
                         
-                        <span class="card-title">Vue基础知识</span>
+                        <span class="card-title">Vue框架面试知识点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -862,13 +1206,13 @@ function ajax(url, successFn) &amp;#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/25/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+                <a href="/2022/02/25/Web%20API-Ajax/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="前端性能优化">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Web-API-Ajax">
                         
-                        <span class="card-title">前端性能优化</span>
+                        <span class="card-title">Web-API-Ajax</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -896,16 +1240,12 @@ function ajax(url, successFn) &amp;#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
-                        <span class="chip bg-color">网页加载过程</span>
+                    <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
+                        <span class="chip bg-color">手写Ajax</span>
                     </a>
                     
-                    <a href="/tags/%E6%89%8B%E5%86%99%E9%98%B2%E6%8A%96/">
-                        <span class="chip bg-color">手写防抖</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%89%8B%E5%86%99%E8%8A%82%E6%B5%81/">
-                        <span class="chip bg-color">手写节流</span>
+                    <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
+                        <span class="chip bg-color">同源策略</span>
                     </a>
                     
                 </div>

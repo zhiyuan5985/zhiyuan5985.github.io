@@ -4,12 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Web-API-Ajax, Aaron :Chen">
-    <meta name="description" content="Ajax
-手写简易 AJax
-function ajax(url, successFn) &amp;#123;
-    const xhr = new XMLHttpRequest()
-    xhr.open(&#34;GET&#34;, &#34;/api&#34;, fal">
+    <meta name="keywords" content="WebSocket基础知识, Aaron :Chen">
+    <meta name="description" content="WebSocket 概念
+Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的全双工通信。
+短轮询是每隔一段时间发送一次HTTP请求，WebSocket 是全双工通讯的协议，允许服务端主动向客户端推送数据。短轮询的实时">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +19,7 @@ function ajax(url, successFn) &amp;#123;
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Web-API-Ajax | Aaron :Chen</title>
+    <title>WebSocket基础知识 | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -314,12 +312,12 @@ function ajax(url, successFn) &amp;#123;
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Web-API-Ajax</h1>
+                    <h1 class="description center-align post-title">WebSocket基础知识</h1>
                 </div>
             </div>
         </div>
@@ -435,12 +433,8 @@ function ajax(url, successFn) &amp;#123;
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
-                                <span class="chip bg-color">手写Ajax</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                                <span class="chip bg-color">同源策略</span>
+                            <a href="/tags/WebSocket/">
+                                <span class="chip bg-color">WebSocket</span>
                             </a>
                         
                     </div>
@@ -451,8 +445,8 @@ function ajax(url, successFn) &amp;#123;
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JS%E5%9F%BA%E7%A1%80/" class="post-category">
-                                JS基础
+                            <a href="/categories/WebSocket/" class="post-category">
+                                WebSocket
                             </a>
                         
                     </div>
@@ -464,7 +458,7 @@ function ajax(url, successFn) &amp;#123;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-25
+                    2022-03-24
                 </div>
                 
 
@@ -488,83 +482,49 @@ function ajax(url, successFn) &amp;#123;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
-<li><p>手写简易 <code>AJax</code></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> successFn</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-    xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 这里的函数异步执行</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token function">successFn</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'其他情况'</span><span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-    xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>	
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>使用 Promise </p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-   	    xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 这里的函数异步执行</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">resolve</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'404 Not Found'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
-    	<span class="token punctuation">&#125;</span>
-        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>	
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="WebSocket-概念"><a href="#WebSocket-概念" class="headerlink" title="WebSocket 概念"></a>WebSocket 概念</h2><ul>
+<li>Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的全双工通信。</li>
+<li>短轮询是每隔一段时间发送一次HTTP请求，WebSocket 是全双工通讯的协议，允许服务端主动向客户端推送数据。短轮询的实时性不高，而且影响性能，而WebSocket做到了真正意义上的实时。</li>
+</ul>
+<h2 id="前端调用-WebSocket-的方法"><a href="#前端调用-WebSocket-的方法" class="headerlink" title="前端调用  WebSocket   的方法"></a>前端调用  WebSocket   的方法</h2><ul>
+<li><p>&#96;&#96;&#96;js<br>&#x2F;&#x2F; 创建 webSocket 连接<br>const socket &#x3D; new WebSocket(‘ws:&#x2F;&#x2F;localhost:8080’);</p>
+<p>&#x2F;&#x2F; open 事件，当一个 WebSocket 连接成功时触发<br>socket.addEventListener(‘open’, function (event) {<br>socket.send(‘Hello Server!’);<br>});</p>
+<p>&#x2F;&#x2F; message 事件， 当服务端返回数据的时候触发<br>socket.addEventListener(‘message’, function (event) {<br>console.log(‘Message from server ‘, event.data);<br>});</p>
+<pre class="line-numbers language-none"><code class="language-none">
+- 事件
 
+  - [&#96;close&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;close_event)
 
-</li>
-<li><p><code>readyState </code></p>
-<ul>
-<li>0 - （未初始化） 还没有调用 send 方法</li>
-<li>1 - （载入） 已调用 send() 方法， 正在发送请求</li>
-<li>2 - （载入完成） send() 方法执行完成，已经接收到全部响应内容</li>
-<li>3 - （交互）正在解析响应内容</li>
-<li><strong>4 - （完成）响应内容解析完成，可以在客户端调用</strong></li>
-</ul>
-</li>
-<li><p>status</p>
-<ul>
-<li><code>301</code> 永久重定向</li>
-<li><code>302 </code>临时重定向</li>
-<li><code>304 </code>读本地缓存</li>
-<li><code>403 </code>未授权</li>
-<li><code>404 </code>未找到</li>
-<li><code>5xx </code>服务器异常</li>
-</ul>
-</li>
-</ul>
-<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><ul>
-<li>Ajax 请求时， 浏览器要求当前网页和 server 必须同源</li>
-<li>同源：协议、域名、端口，三者必须一致</li>
-<li>但是 图片、<code>CSS</code>、<code>JS</code> 可以无视同源策略</li>
-</ul>
-<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><ul>
-<li>所有的跨域，都需要经过 server 端允许和配合</li>
-<li>未经 server 端允许就实现跨域，说明浏览器有漏洞</li>
-</ul>
-<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a><code>JSONP</code></h2><ul>
-<li>服务器可以任意动态拼接数据返回</li>
-<li>script 可以绕过跨域</li>
-<li>所有 script 可以获得跨域数据，只要服务器愿意</li>
-</ul>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
-<li>JQuery</li>
-<li>Fetch</li>
-<li>Axios</li>
+    当一个 &#96;WebSocket&#96; 连接被关闭时触发。
+    也可以通过 [&#96;onclose&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;close_event) 属性来设置。
+
+  - [&#96;error&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;error_event)
+
+    当一个 &#96;WebSocket&#96; 连接因错误而关闭时触发，例如无法发送数据时。
+    也可以通过 [&#96;onerror&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;conflicting&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;error_event) 属性来设置.
+
+  - [&#96;message&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;message_event)
+
+    当通过 &#96;WebSocket&#96; 收到数据时触发。
+    也可以通过 [&#96;onmessage&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;conflicting&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;message_event) 属性来设置。
+
+  - [&#96;open&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;open_event)
+
+    当一个 &#96;WebSocket&#96; 连接成功时触发。
+    也可以通过 [&#96;onopen&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;open_event) 属性来设置。
+
+## NodeJS  建立   WebSocket  服务
+
+&#96;&#96;&#96;js
+const ws &#x3D; require(&#39;nodejs-websocket&#39;)
+&#x2F;&#x2F; 创建一个server
+&#x2F;&#x2F; 每次只要有用户连接，函数就会执行，会给当前连接的用户创建一个 connect 对象
+const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
+    console.log(&#39;有用户连接上来了&#39;)
+    connect.on(&#39;text&#39;, data &#x3D;&gt; &#123;
+        console.log(&#39;接收了用户的数据&#39;, data)
+    &#125;)
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 
                 
@@ -592,7 +552,7 @@ function ajax(url, successFn) &amp;#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/02/25/Web%20API-Ajax/">https://zhiyuan5985.github.io/2022/02/25/Web%20API-Ajax/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/03/24/WebSocket/">https://zhiyuan5985.github.io/2022/03/24/WebSocket/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -630,12 +590,8 @@ function ajax(url, successFn) &amp;#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%89%8B%E5%86%99Ajax/">
-                                    <span class="chip bg-color">手写Ajax</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-                                    <span class="chip bg-color">同源策略</span>
+                                <a href="/tags/WebSocket/">
+                                    <span class="chip bg-color">WebSocket</span>
                                 </a>
                             
                         </div>
@@ -809,17 +765,18 @@ function ajax(url, successFn) &amp;#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/02/28/Vue%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+                <a href="/2022/03/24/WebSocket/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Vue基础知识">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="WebSocket基础知识">
                         
-                        <span class="card-title">Vue基础知识</span>
+                        <span class="card-title">WebSocket基础知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -829,26 +786,27 @@ function ajax(url, successFn) &amp;#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Vue/" class="post-category">
-                                    Vue
+                            <a href="/categories/WebSocket/" class="post-category">
+                                    WebSocket
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
+                    <a href="/tags/WebSocket/">
+                        <span class="chip bg-color">WebSocket</span>
                     </a>
                     
                 </div>
@@ -862,13 +820,13 @@ function ajax(url, successFn) &amp;#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/25/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+                <a href="/2022/03/07/%E9%9D%A2%E8%AF%95%E7%A7%AF%E7%B4%AF%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="前端性能优化">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="面试积累日记">
                         
-                        <span class="card-title">前端性能优化</span>
+                        <span class="card-title">面试积累日记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -879,14 +837,14 @@ function ajax(url, successFn) &amp;#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JS%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    JS基础
+                            <a href="/categories/%E9%9D%A2%E8%AF%95%E6%97%A5%E8%AE%B0/" class="post-category">
+                                    面试日记
                                 </a>
                             
                             
@@ -896,16 +854,8 @@ function ajax(url, successFn) &amp;#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
-                        <span class="chip bg-color">网页加载过程</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%89%8B%E5%86%99%E9%98%B2%E6%8A%96/">
-                        <span class="chip bg-color">手写防抖</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%89%8B%E5%86%99%E8%8A%82%E6%B5%81/">
-                        <span class="chip bg-color">手写节流</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95%E6%97%A5%E8%AE%B0/">
+                        <span class="chip bg-color">面试日记</span>
                     </a>
                     
                 </div>
