@@ -491,7 +491,7 @@ Vue ">
 <li>传统组件，只是静态渲染，更新还需要依赖 DOM 操作</li>
 <li>数据驱动视图 —— Vue MVVM  （数据操作DOM）</li>
 </ul>
-<h3 id="MVVM-（通过修改-Model-中的数据，去操作-视图的变化，而不用再去操作-DOM）"><a href="#MVVM-（通过修改-Model-中的数据，去操作-视图的变化，而不用再去操作-DOM）" class="headerlink" title="MVVM （通过修改 Model 中的数据，去操作 视图的变化，而不用再去操作 DOM）"></a>MVVM （通过修改 Model 中的数据，去操作 视图的变化，而不用再去操作 DOM）</h3><p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220403093848949.png" alt="image-20220403093848949"></p>
+<h3 id="MVVM-（通过修改-Model-中的数据，去操作-视图的变化，而不用再去操作-DOM）"><a href="#MVVM-（通过修改-Model-中的数据，去操作-视图的变化，而不用再去操作-DOM）" class="headerlink" title="MVVM （通过修改 Model 中的数据，去操作 视图的变化，而不用再去操作 DOM）"></a>MVVM （通过修改 Model 中的数据，去操作 视图的变化，而不用再去操作 DOM）</h3><p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220403093848949.png" alt="MVVM"></p>
 <h3 id="Vue-响应式"><a href="#Vue-响应式" class="headerlink" title="Vue 响应式"></a>Vue 响应式</h3><ul>
 <li><p>组件 data 的数据一旦变化，立刻触发视图的更新</p>
 </li>
@@ -500,96 +500,113 @@ Vue ">
 <li><p>考察 Vue 原理的第一步</p>
 </li>
 <li><p>核心 API （Object.defineProperty） </p>
-<ul>
-<li><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
 <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'zhangsan'</span>
-Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">get</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'get'</span><span class="token punctuation">)</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+    <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'get'</span><span class="token punctuation">)</span>
         <span class="token keyword">return</span> name
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> 
-    <span class="token keyword">set</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
+    <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">newVal</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'set'</span><span class="token punctuation">)</span>
         name <span class="token operator">=</span> newVal
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span>pre <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"line-numbers language-none"</span><span class="token operator">></span><span class="token operator">&lt;</span>code <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"language-none"</span><span class="token operator">></span>
-<span class="token operator">-</span> 监听对象，
-
-  <span class="token operator">-</span> <span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span>js
-    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 定义简单的数据
-    <span class="token keyword">const</span> data <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        name<span class="token punctuation">:</span> <span class="token string">'zhangsan'</span><span class="token punctuation">,</span>
-        age <span class="token punctuation">:</span> <span class="token number">20</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 监听数据
-    <span class="token function">observer</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 测试
-    data<span class="token punctuation">.</span>name <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token string">'lisa'</span>
-    data<span class="token punctuation">.</span>age <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token number">21</span>
-    data<span class="token punctuation">.</span>x <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token string">'100'</span>
-    <span class="token keyword">delete</span> data<span class="token punctuation">.</span>name<span class="token operator">&lt;</span>span aria<span class="token operator">-</span>hidden<span class="token operator">=</span><span class="token string">"true"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"line-numbers-rows"</span><span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</code></pre>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">observer</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 只监听对象或者数组</span>
+<li><p>监听对象，</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 定义简单的数据</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'zhangsan'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">age</span> <span class="token operator">:</span> <span class="token number">20</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 监听数据</span>
+<span class="token function">observer</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+<span class="token comment">// 测试</span>
+data<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'lisa'</span>
+data<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">21</span>
+data<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token string">'100'</span>
+<span class="token keyword">delete</span> data<span class="token punctuation">.</span>name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">observer</span><span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 只监听对象或者数组</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> target <span class="token operator">!==</span> <span class="token string">'object'</span> <span class="token operator">||</span> target <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>  <span class="token keyword">return</span> target
-    <span class="token comment" spellcheck="true">// 重新定义各个属性（for in），进行监听</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> target<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment">// 重新定义各个属性（for in），进行监听</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token function">defineReactive</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token keyword">function</span> <span class="token function">defineReactive</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 给每个对象的键都绑定属性</span>
-    Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">function</span> <span class="token function">defineReactive</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 给每个对象的键都绑定属性</span>
+    Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
             <span class="token keyword">return</span> value
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-        <span class="token keyword">set</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>newValue <span class="token operator">!==</span> value<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token function">set</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>newValue <span class="token operator">!==</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
                 value <span class="token operator">=</span> newValue
-                <span class="token function">updateView</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// 进行视图更新，会有输出提示</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&lt;</span>pre <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"line-numbers language-none"</span><span class="token operator">></span><span class="token operator">&lt;</span>code <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"language-none"</span><span class="token operator">></span>
-<span class="token operator">-</span> 复杂对象，深度监听
-
-  <span class="token operator">-</span> <span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span>js
-    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 定义复杂的数据
-    <span class="token keyword">const</span> data <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        name<span class="token punctuation">:</span> <span class="token string">'zhangsan'</span><span class="token punctuation">,</span>
-        age <span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
-        info<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            address<span class="token punctuation">:</span> <span class="token string">'北京'</span>    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 需要深度监听
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span>span aria<span class="token operator">-</span>hidden<span class="token operator">=</span><span class="token string">"true"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"line-numbers-rows"</span><span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</code></pre>
+                <span class="token function">updateView</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment">// 进行视图更新，会有输出提示</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p>&#96;&#96;&#96;js<br>function observer(target) {<br>&#x2F;&#x2F; 只监听对象或者数组<br>if (typeof target !&#x3D;&#x3D; ‘object’ || target &#x3D;&#x3D; null)  return target<br>&#x2F;&#x2F; 重新定义各个属性（for in），进行监听<br>for (let key in target) {<br>    defineReactive(target, key, target[key])<br>}<br>}<br>function defineReactive(target, key, value) {<br>&#x2F;&#x2F; 深度监听<br>observer(value)<br>&#x2F;&#x2F; 给每个对象的键都绑定属性<br>Object.defineProperty(target, key, {<br>    get() {<br>        return value<br>    },<br>    set(newValue) {<br>        if (newValue !&#x3D;&#x3D; value) {<br>            &#x2F;&#x2F; 深度监听, 防止赋值的时候变成复杂对象<br>            observer(value)<br>            value &#x3D; newValue<br>            updateView()    &#x2F;&#x2F; 进行视图更新，会有输出提示<br>        }<br>    }<br>})<br>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 几个缺点
+<li><p>复杂对象，深度监听</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 定义复杂的数据</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'zhangsan'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">age</span> <span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">info</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">address</span><span class="token operator">:</span> <span class="token string">'北京'</span>    <span class="token comment">// 需要深度监听</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  - 深度监听需要递归到底，如果对象数据过深的话，一次性计算量大
-  -  无法监听新增 &#x2F;  删除属性 （Vue.set 和 Vue）
-
--  监听数组
-
-  - &#96;&#96;&#96;js
-    &#x2F;&#x2F; 重新定义数组的原型
-    const oldArrayProp &#x3D; Array.prototype
-    &#x2F;&#x2F; 创建新对象，原型指向 oldArrayProp， 再扩展新的方法不会影响原型
-    const arrProp &#x3D; Object.create(oldArrayProp)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">observer</span><span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 只监听对象或者数组</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> target <span class="token operator">!==</span> <span class="token string">'object'</span> <span class="token operator">||</span> target <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>  <span class="token keyword">return</span> target
+    <span class="token comment">// 重新定义各个属性（for in），进行监听</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">defineReactive</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">function</span> <span class="token function">defineReactive</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 深度监听</span>
+    <span class="token function">observer</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+    <span class="token comment">// 给每个对象的键都绑定属性</span>
+    Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> value
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token function">set</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>newValue <span class="token operator">!==</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 深度监听, 防止赋值的时候变成复杂对象</span>
+                <span class="token function">observer</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+                value <span class="token operator">=</span> newValue
+                <span class="token function">updateView</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment">// 进行视图更新，会有输出提示</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>几个缺点</p>
+<ul>
+<li>深度监听需要递归到底，如果对象数据过深的话，一次性计算量大</li>
+<li>无法监听新增 &#x2F;  删除属性 （Vue.set 和 Vue）</li>
 </ul>
 </li>
+<li><p>监听数组</p>
+</li>
 </ul>
+  <pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 重新定义数组的原型</span>
+<span class="token keyword">const</span> oldArrayProp <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype
+<span class="token comment">// 创建新对象，原型指向 oldArrayProp， 再扩展新的方法不会影响原型</span>
+<span class="token keyword">const</span> arrProp <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>oldArrayProp<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="虚拟-DOM"><a href="#虚拟-DOM" class="headerlink" title="虚拟 DOM"></a>虚拟 DOM</h3><ul>
 <li>虚拟 DOM 是实现 vue 和 react 的基石，diff 算法是 vdom 中最核心，最关键的部分</li>
 <li>用 JS 模拟 DOM 结构，计算出最小变更之后，再操作 DOM</li>
 <li>新旧 vnode 对比，得到最小的更新范围，最后更新 DOM</li>
 </ul>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220403214729781.png" alt="image-20220403214729781"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220403214729781.png" alt="image-20220403214729781"></p>
 <pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// h 函数 ，创建虚拟 DOM</span>
 <span class="token keyword">var</span> vnode <span class="token operator">=</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token string">'节点名称'</span><span class="token punctuation">,</span> <span class="token string">'属性'</span><span class="token punctuation">,</span> <span class="token string">'子节点数组'</span><span class="token punctuation">)</span>
 <span class="token comment">// patch 函数，把虚拟 DOM 渲染在节点上</span>
@@ -608,18 +625,17 @@ Object<span class="token punctuation">.</span><span class="token function">defin
 </li>
 <li><p>diff 算法 源码解读（主流程）</p>
 </li>
-<li><pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 1. h函数，返回 vnode</span>
-    <span class="token comment" spellcheck="true">//  vnode 返回一个对象 &amp;#123;sel, data, children, text, elm, key&amp;#125; </span>
-<span class="token comment" spellcheck="true">// 2、patch 函数，如果两个vnode不想同，则直接删掉重建</span>
-    <span class="token comment" spellcheck="true">//  patchVnode , 进行对比两者vnode是否相同</span>
-       <span class="token comment" spellcheck="true">//  先获取oldNode和newNode的children，</span>
-    <span class="token comment" spellcheck="true">//  判断新vnode的text是否有值，如果有值，一般children就为空，此时删除旧的node，设置新的text即可。</span>
-    <span class="token comment" spellcheck="true">//  else情况，当vnode的text为undefined时（isUndef(vnode.text)为true），vnode children有值。再进行 新旧都有children、新node有children旧的没有、旧node有children新的没有等等判断。</span>
-    <span class="token comment" spellcheck="true">//  核心原则就是当旧的没有新的有，直接添加新的。旧的有新的没有，删除旧的。</span>
-<span class="token comment" spellcheck="true">// 3、updateChildren（key的重要性 ）</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
 </ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 1. h函数，返回 vnode</span>
+  	<span class="token comment">//  vnode 返回一个对象 &#123;sel, data, children, text, elm, key&#125; </span>
+<span class="token comment">// 2、patch 函数，如果两个vnode不想同，则直接删掉重建</span>
+  	<span class="token comment">//  patchVnode , 进行对比两者vnode是否相同</span>
+     	<span class="token comment">//  先获取oldNode和newNode的children，</span>
+      <span class="token comment">//  判断新vnode的text是否有值，如果有值，一般children就为空，此时删除旧的node，设置新的text即可。</span>
+      <span class="token comment">//  else情况，当vnode的text为undefined时（isUndef(vnode.text)为true），vnode children有值。再进行 新旧都有children、新node有children旧的没有、旧node有children新的没有等等判断。</span>
+      <span class="token comment">//  核心原则就是当旧的没有新的有，直接添加新的。旧的有新的没有，删除旧的。</span>
+  <span class="token comment">// 3、updateChildren（key的重要性 ）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="模板编译"><a href="#模板编译" class="headerlink" title="模板编译"></a>模板编译</h3><ul>
 <li>vue的模板到底是什么，即模板怎么转为 js 代码？<ul>
 <li>模板编译为 render 函数， 执行 render 函数返回 vnode</li>
@@ -628,7 +644,7 @@ Object<span class="token punctuation">.</span><span class="token function">defin
 </li>
 <li>也可以用 render 代替 template</li>
 </ul>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404134055941.png" alt="image-20220404134055941"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404134055941.png" alt="image-20220404134055941"></p>
 <h3 id="初次渲染的过程"><a href="#初次渲染的过程" class="headerlink" title="初次渲染的过程"></a>初次渲染的过程</h3><ul>
 <li>解析模板为 render 函数（或在开发环境已完成， vue-loader）</li>
 <li>触发响应式，监听 data 属性 getter， setter</li>
@@ -639,7 +655,7 @@ Object<span class="token punctuation">.</span><span class="token function">defin
 <li>重新执行 render 函数， 生成 newVnode</li>
 <li>patch(vnode, newVnode)</li>
 </ul>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404135403629.png" alt="image-20220404135403629"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404135403629.png" alt="image-20220404135403629"></p>
 <h3 id="异步渲染原理"><a href="#异步渲染原理" class="headerlink" title="异步渲染原理"></a>异步渲染原理</h3><ul>
 <li>汇总 data 的修改，一次性更新视图</li>
 <li>减少 dom 的操作，提高性能</li>
@@ -685,31 +701,31 @@ Object<span class="token punctuation">.</span><span class="token function">defin
 <li><p>Vue组件如何通信</p>
 </li>
 </ul>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404152724333.png" alt="image-20220404152724333"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404152724333.png" alt="image-20220404152724333"></p>
 <ul>
 <li>双向数据绑定 v-model 的实现原理</li>
 </ul>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404152858030.png" alt="image-20220404152858030"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404152858030.png" alt="image-20220404152858030"></p>
 <ul>
 <li><p>ajax请求应该放在那个生命周期</p>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153450464.png" alt="image-20220404153450464"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404153450464.png" alt="image-20220404153450464"></p>
 </li>
 <li><p>如何自己实现 v-model</p>
 </li>
 </ul>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153601225.png" alt="image-20220404153601225"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404153601225.png" alt="image-20220404153601225"></p>
 <ul>
 <li><p>何时需要使用 beforeDestroy</p>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153751776.png" alt="image-20220404153751776"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404153751776.png" alt="image-20220404153751776"></p>
 </li>
 <li><p>什么是作用域插槽</p>
 </li>
 </ul>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153812138.png" alt="image-20220404153812138"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404153812138.png" alt="image-20220404153812138"></p>
 <ul>
 <li>vuex 中的 action 和 mutation 有何区别</li>
 </ul>
-<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153857487.png" alt="image-20220404153857487"></p>
+<p><img src="/images/JS/Vue%E5%8E%9F%E7%90%86/image-20220404153857487.png" alt="image-20220404153857487"></p>
 <ul>
 <li><p>请描述响应式原理</p>
 <ul>
