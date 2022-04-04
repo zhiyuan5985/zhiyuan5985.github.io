@@ -4,10 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="WebSocket基础知识, Aaron :Chen">
-    <meta name="description" content="WebSocket 概念
-Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的全双工通信。
-短轮询是每隔一段时间发送一次HTTP请求，WebSocket 是全双工通讯的协议，允许服务端主动向客户端推送数据。短轮询的实时">
+    <meta name="keywords" content="Vue原理, Aaron :Chen">
+    <meta name="description" content="Vue 原理
+组件化基础
+传统组件，只是静态渲染，更新还需要依赖 DOM 操作
+数据驱动视图 —— Vue MVVM  （数据操作DOM）
+
+MVVM （通过修改 Model 中的数据，去操作 视图的变化，而不用再去操作 DOM）
+Vue ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +23,7 @@ Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的�
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>WebSocket基础知识 | Aaron :Chen</title>
+    <title>Vue原理 | Aaron :Chen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -312,12 +316,12 @@ Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">WebSocket基础知识</h1>
+                    <h1 class="description center-align post-title">Vue原理</h1>
                 </div>
             </div>
         </div>
@@ -433,8 +437,8 @@ Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的�
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/WebSocket/">
-                                <span class="chip bg-color">WebSocket</span>
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
                             </a>
                         
                     </div>
@@ -445,8 +449,8 @@ Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的�
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/WebSocket/" class="post-category">
-                                WebSocket
+                            <a href="/categories/Vue/" class="post-category">
+                                Vue
                             </a>
                         
                     </div>
@@ -458,7 +462,7 @@ Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-24
+                    2022-04-01
                 </div>
                 
 
@@ -482,49 +486,248 @@ Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="WebSocket-概念"><a href="#WebSocket-概念" class="headerlink" title="WebSocket 概念"></a>WebSocket 概念</h2><ul>
-<li>Websocket 是 HTML5中提出的新的协议，可以实现和服务器之间的全双工通信。</li>
-<li>短轮询是每隔一段时间发送一次HTTP请求，WebSocket 是全双工通讯的协议，允许服务端主动向客户端推送数据。短轮询的实时性不高，而且影响性能，而WebSocket做到了真正意义上的实时。</li>
+                <h2 id="Vue-原理"><a href="#Vue-原理" class="headerlink" title="Vue 原理"></a>Vue 原理</h2><ul>
+<li>组件化基础</li>
+<li>传统组件，只是静态渲染，更新还需要依赖 DOM 操作</li>
+<li>数据驱动视图 —— Vue MVVM  （数据操作DOM）</li>
 </ul>
-<h2 id="前端调用-WebSocket-的方法"><a href="#前端调用-WebSocket-的方法" class="headerlink" title="前端调用  WebSocket   的方法"></a>前端调用  WebSocket   的方法</h2><ul>
-<li><p>&#96;&#96;&#96;js<br>&#x2F;&#x2F; 创建 webSocket 连接<br>const socket &#x3D; new WebSocket(‘ws:&#x2F;&#x2F;localhost:8080’);</p>
-<p>&#x2F;&#x2F; open 事件，当一个 WebSocket 连接成功时触发<br>socket.addEventListener(‘open’, function (event) {<br>socket.send(‘Hello Server!’);<br>});</p>
-<p>&#x2F;&#x2F; message 事件， 当服务端返回数据的时候触发<br>socket.addEventListener(‘message’, function (event) {<br>console.log(‘Message from server ‘, event.data);<br>});</p>
+<h3 id="MVVM-（通过修改-Model-中的数据，去操作-视图的变化，而不用再去操作-DOM）"><a href="#MVVM-（通过修改-Model-中的数据，去操作-视图的变化，而不用再去操作-DOM）" class="headerlink" title="MVVM （通过修改 Model 中的数据，去操作 视图的变化，而不用再去操作 DOM）"></a>MVVM （通过修改 Model 中的数据，去操作 视图的变化，而不用再去操作 DOM）</h3><p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220403093848949.png" alt="image-20220403093848949"></p>
+<h3 id="Vue-响应式"><a href="#Vue-响应式" class="headerlink" title="Vue 响应式"></a>Vue 响应式</h3><ul>
+<li><p>组件 data 的数据一旦变化，立刻触发视图的更新</p>
+</li>
+<li><p>实现数据驱动视图的第一步</p>
+</li>
+<li><p>考察 Vue 原理的第一步</p>
+</li>
+<li><p>核心 API （Object.defineProperty） </p>
+<ul>
+<li><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'zhangsan'</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">get</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'get'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> name
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> 
+    <span class="token keyword">set</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'set'</span><span class="token punctuation">)</span>
+        name <span class="token operator">=</span> newVal
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span>pre <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"line-numbers language-none"</span><span class="token operator">></span><span class="token operator">&lt;</span>code <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"language-none"</span><span class="token operator">></span>
+<span class="token operator">-</span> 监听对象，
+
+  <span class="token operator">-</span> <span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span>js
+    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 定义简单的数据
+    <span class="token keyword">const</span> data <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        name<span class="token punctuation">:</span> <span class="token string">'zhangsan'</span><span class="token punctuation">,</span>
+        age <span class="token punctuation">:</span> <span class="token number">20</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 监听数据
+    <span class="token function">observer</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 测试
+    data<span class="token punctuation">.</span>name <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token string">'lisa'</span>
+    data<span class="token punctuation">.</span>age <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token number">21</span>
+    data<span class="token punctuation">.</span>x <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token string">'100'</span>
+    <span class="token keyword">delete</span> data<span class="token punctuation">.</span>name<span class="token operator">&lt;</span>span aria<span class="token operator">-</span>hidden<span class="token operator">=</span><span class="token string">"true"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"line-numbers-rows"</span><span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
+</li>
+<li><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">observer</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 只监听对象或者数组</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> target <span class="token operator">!==</span> <span class="token string">'object'</span> <span class="token operator">||</span> target <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>  <span class="token keyword">return</span> target
+    <span class="token comment" spellcheck="true">// 重新定义各个属性（for in），进行监听</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> target<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token function">defineReactive</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">defineReactive</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 给每个对象的键都绑定属性</span>
+    Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> value
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+        <span class="token keyword">set</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>newValue <span class="token operator">!==</span> value<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                value <span class="token operator">=</span> newValue
+                <span class="token function">updateView</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// 进行视图更新，会有输出提示</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span>pre <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"line-numbers language-none"</span><span class="token operator">></span><span class="token operator">&lt;</span>code <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"language-none"</span><span class="token operator">></span>
+<span class="token operator">-</span> 复杂对象，深度监听
+
+  <span class="token operator">-</span> <span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">96</span><span class="token punctuation">;</span>js
+    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 定义复杂的数据
+    <span class="token keyword">const</span> data <span class="token operator">&amp;</span>#x3D<span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        name<span class="token punctuation">:</span> <span class="token string">'zhangsan'</span><span class="token punctuation">,</span>
+        age <span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+        info<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            address<span class="token punctuation">:</span> <span class="token string">'北京'</span>    <span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x2F<span class="token punctuation">;</span> 需要深度监听
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token operator">&lt;</span>span aria<span class="token operator">-</span>hidden<span class="token operator">=</span><span class="token string">"true"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"line-numbers-rows"</span><span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
+</li>
+<li><p>&#96;&#96;&#96;js<br>function observer(target) {<br>&#x2F;&#x2F; 只监听对象或者数组<br>if (typeof target !&#x3D;&#x3D; ‘object’ || target &#x3D;&#x3D; null)  return target<br>&#x2F;&#x2F; 重新定义各个属性（for in），进行监听<br>for (let key in target) {<br>    defineReactive(target, key, target[key])<br>}<br>}<br>function defineReactive(target, key, value) {<br>&#x2F;&#x2F; 深度监听<br>observer(value)<br>&#x2F;&#x2F; 给每个对象的键都绑定属性<br>Object.defineProperty(target, key, {<br>    get() {<br>        return value<br>    },<br>    set(newValue) {<br>        if (newValue !&#x3D;&#x3D; value) {<br>            &#x2F;&#x2F; 深度监听, 防止赋值的时候变成复杂对象<br>            observer(value)<br>            value &#x3D; newValue<br>            updateView()    &#x2F;&#x2F; 进行视图更新，会有输出提示<br>        }<br>    }<br>})<br>}</p>
 <pre class="line-numbers language-none"><code class="language-none">
-- 事件
+- 几个缺点
 
-  - [&#96;close&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;close_event)
+  - 深度监听需要递归到底，如果对象数据过深的话，一次性计算量大
+  -  无法监听新增 &#x2F;  删除属性 （Vue.set 和 Vue）
 
-    当一个 &#96;WebSocket&#96; 连接被关闭时触发。
-    也可以通过 [&#96;onclose&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;close_event) 属性来设置。
+-  监听数组
 
-  - [&#96;error&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;error_event)
+  - &#96;&#96;&#96;js
+    &#x2F;&#x2F; 重新定义数组的原型
+    const oldArrayProp &#x3D; Array.prototype
+    &#x2F;&#x2F; 创建新对象，原型指向 oldArrayProp， 再扩展新的方法不会影响原型
+    const arrProp &#x3D; Object.create(oldArrayProp)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="虚拟-DOM"><a href="#虚拟-DOM" class="headerlink" title="虚拟 DOM"></a>虚拟 DOM</h3><ul>
+<li>虚拟 DOM 是实现 vue 和 react 的基石，diff 算法是 vdom 中最核心，最关键的部分</li>
+<li>用 JS 模拟 DOM 结构，计算出最小变更之后，再操作 DOM</li>
+<li>新旧 vnode 对比，得到最小的更新范围，最后更新 DOM</li>
+</ul>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220403214729781.png" alt="image-20220403214729781"></p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// h 函数 ，创建虚拟 DOM</span>
+<span class="token keyword">var</span> vnode <span class="token operator">=</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token string">'节点名称'</span><span class="token punctuation">,</span> <span class="token string">'属性'</span><span class="token punctuation">,</span> <span class="token string">'子节点数组'</span><span class="token punctuation">)</span>
+<span class="token comment">// patch 函数，把虚拟 DOM 渲染在节点上</span>
+<span class="token function">patch</span><span class="token punctuation">(</span>container<span class="token punctuation">,</span> vnode<span class="token punctuation">)</span>
+<span class="token comment">// patch 函数，更新已有的虚拟 DOM</span>
+<span class="token function">patch</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> newVnode<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-    当一个 &#96;WebSocket&#96; 连接因错误而关闭时触发，例如无法发送数据时。
-    也可以通过 [&#96;onerror&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;conflicting&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;error_event) 属性来设置.
 
-  - [&#96;message&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;message_event)
 
-    当通过 &#96;WebSocket&#96; 收到数据时触发。
-    也可以通过 [&#96;onmessage&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;conflicting&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;message_event) 属性来设置。
-
-  - [&#96;open&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;open_event)
-
-    当一个 &#96;WebSocket&#96; 连接成功时触发。
-    也可以通过 [&#96;onopen&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;API&#x2F;WebSocket&#x2F;open_event) 属性来设置。
-
-## NodeJS  建立   WebSocket  服务
-
-&#96;&#96;&#96;js
-const ws &#x3D; require(&#39;nodejs-websocket&#39;)
-&#x2F;&#x2F; 创建一个server
-&#x2F;&#x2F; 每次只要有用户连接，函数就会执行，会给当前连接的用户创建一个 connect 对象
-const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
-    console.log(&#39;有用户连接上来了&#39;)
-    connect.on(&#39;text&#39;, data &#x3D;&gt; &#123;
-        console.log(&#39;接收了用户的数据&#39;, data)
-    &#125;)
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<h3 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a><strong>diff 算法</strong></h3><ul>
+<li><p>只比较同一层级的元素，不跨层比较</p>
+</li>
+<li><p>tag 不相同，则直接删掉重建，不再深度比较</p>
+</li>
+<li><p>tag 和 key 两者相同，则认为是相同节点，不再深度比较</p>
+</li>
+<li><p>diff 算法 源码解读（主流程）</p>
+</li>
+<li><pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 1. h函数，返回 vnode</span>
+    <span class="token comment" spellcheck="true">//  vnode 返回一个对象 &amp;#123;sel, data, children, text, elm, key&amp;#125; </span>
+<span class="token comment" spellcheck="true">// 2、patch 函数，如果两个vnode不想同，则直接删掉重建</span>
+    <span class="token comment" spellcheck="true">//  patchVnode , 进行对比两者vnode是否相同</span>
+       <span class="token comment" spellcheck="true">//  先获取oldNode和newNode的children，</span>
+    <span class="token comment" spellcheck="true">//  判断新vnode的text是否有值，如果有值，一般children就为空，此时删除旧的node，设置新的text即可。</span>
+    <span class="token comment" spellcheck="true">//  else情况，当vnode的text为undefined时（isUndef(vnode.text)为true），vnode children有值。再进行 新旧都有children、新node有children旧的没有、旧node有children新的没有等等判断。</span>
+    <span class="token comment" spellcheck="true">//  核心原则就是当旧的没有新的有，直接添加新的。旧的有新的没有，删除旧的。</span>
+<span class="token comment" spellcheck="true">// 3、updateChildren（key的重要性 ）</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h3 id="模板编译"><a href="#模板编译" class="headerlink" title="模板编译"></a>模板编译</h3><ul>
+<li>vue的模板到底是什么，即模板怎么转为 js 代码？<ul>
+<li>模板编译为 render 函数， 执行 render 函数返回 vnode</li>
+<li>基于 vnode 再执行 patch 和 diff</li>
+</ul>
+</li>
+<li>也可以用 render 代替 template</li>
+</ul>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404134055941.png" alt="image-20220404134055941"></p>
+<h3 id="初次渲染的过程"><a href="#初次渲染的过程" class="headerlink" title="初次渲染的过程"></a>初次渲染的过程</h3><ul>
+<li>解析模板为 render 函数（或在开发环境已完成， vue-loader）</li>
+<li>触发响应式，监听 data 属性 getter， setter</li>
+<li>执行 render 函数， 生成 vnode， patch(elem, vnode)</li>
+</ul>
+<h3 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h3><ul>
+<li>修改 data， 触发 setter （此前在 getter 中已被监听）</li>
+<li>重新执行 render 函数， 生成 newVnode</li>
+<li>patch(vnode, newVnode)</li>
+</ul>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404135403629.png" alt="image-20220404135403629"></p>
+<h3 id="异步渲染原理"><a href="#异步渲染原理" class="headerlink" title="异步渲染原理"></a>异步渲染原理</h3><ul>
+<li>汇总 data 的修改，一次性更新视图</li>
+<li>减少 dom 的操作，提高性能</li>
+<li>如果想要立即获得修改后的 DOM 元素， 则要使用 $nextTick</li>
+</ul>
+<h3 id="前端路由原理"><a href="#前端路由原理" class="headerlink" title="前端路由原理"></a>前端路由原理</h3><ul>
+<li>回顾 vue-router 的路由模式<ul>
+<li>hash模式</li>
+<li>H5 history 模式</li>
+</ul>
+</li>
+<li>hash 的特点<ul>
+<li>hash 变化会触发网页的跳转，即浏览器的前进后退</li>
+<li>hash 变化不会刷新页面，SPA必须的特点</li>
+<li>hash 永远不会提交到 server 端</li>
+<li>通过 window.onhashchange 来监听的</li>
+</ul>
+</li>
+<li>H5 History 的特点<ul>
+<li>用 url 规范的路由， 但跳转时不刷新页面</li>
+<li>history.pushState     进行路由跳转</li>
+<li>history.onpopstate    浏览器的前进后退</li>
+</ul>
+</li>
+</ul>
+<h2 id="面试真题"><a href="#面试真题" class="headerlink" title="面试真题"></a>面试真题</h2><ul>
+<li><p>v-show 和 v-if 的区别</p>
+<ul>
+<li>v-show 通过 css display 控制显示和隐藏</li>
+<li>v-if 是组件真正的渲染和销毁，而不是显示和隐藏</li>
+<li>频繁切换显示状态用 v-show，否则用 v-if</li>
+</ul>
+</li>
+<li><p>为何在 v-for 当中使用 key</p>
+<ul>
+<li>必须用 key， 且不能是 index 和 random</li>
+<li>diff 算法中通过 tag 和 key 来判断，是否是 sameNode</li>
+<li>减少渲染次数，提升渲染性能</li>
+</ul>
+</li>
+<li><p>父子组件的生命周期</p>
+</li>
+<li><p>Vue组件如何通信</p>
+</li>
+</ul>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404152724333.png" alt="image-20220404152724333"></p>
+<ul>
+<li>双向数据绑定 v-model 的实现原理</li>
+</ul>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404152858030.png" alt="image-20220404152858030"></p>
+<ul>
+<li><p>ajax请求应该放在那个生命周期</p>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153450464.png" alt="image-20220404153450464"></p>
+</li>
+<li><p>如何自己实现 v-model</p>
+</li>
+</ul>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153601225.png" alt="image-20220404153601225"></p>
+<ul>
+<li><p>何时需要使用 beforeDestroy</p>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153751776.png" alt="image-20220404153751776"></p>
+</li>
+<li><p>什么是作用域插槽</p>
+</li>
+</ul>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153812138.png" alt="image-20220404153812138"></p>
+<ul>
+<li>vuex 中的 action 和 mutation 有何区别</li>
+</ul>
+<p><img src="D:\codeMark\hexoBlog\source\images\JS\Vue原理\image-20220404153857487.png" alt="image-20220404153857487"></p>
+<ul>
+<li><p>请描述响应式原理</p>
+<ul>
+<li>监听 data 变化</li>
+<li>组件渲染和更新的流程</li>
+</ul>
+</li>
+<li><p>vue 常见的性能优化</p>
+<ul>
+<li>合理使用 v-show， v-if</li>
+<li>合理使用 computed</li>
+<li>v-for 时加key， 避免和 v-if 同时使用</li>
+<li>自定义事件、DOM事件要及时销毁</li>
+<li>合理使用 keep-alive</li>
+<li>data层级不要太深</li>
+<li>前端的通用性能优化，图片的懒加载</li>
+</ul>
+</li>
 </ul>
 
                 
@@ -552,7 +755,7 @@ const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhiyuan5985.github.io/2022/03/24/WebSocket/">https://zhiyuan5985.github.io/2022/03/24/WebSocket/</a>
+                    <a href="https://zhiyuan5985.github.io/2022/04/01/Vue%E5%8E%9F%E7%90%86/">https://zhiyuan5985.github.io/2022/04/01/Vue%E5%8E%9F%E7%90%86/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -590,8 +793,8 @@ const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/WebSocket/">
-                                    <span class="chip bg-color">WebSocket</span>
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
                                 </a>
                             
                         </div>
@@ -765,9 +968,10 @@ const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/04/01/Vue%E5%8E%9F%E7%90%86/">
                     <div class="card-image">
@@ -785,9 +989,9 @@ const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -800,6 +1004,7 @@ const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -818,13 +1023,13 @@ const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/07/%E9%9D%A2%E8%AF%95%E7%A7%AF%E7%B4%AF%E7%AC%94%E8%AE%B0/">
+                <a href="/2022/03/24/WebSocket/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="面试积累日记">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="WebSocket基础知识">
                         
-                        <span class="card-title">面试积累日记</span>
+                        <span class="card-title">WebSocket基础知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -835,14 +1040,14 @@ const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9D%A2%E8%AF%95%E6%97%A5%E8%AE%B0/" class="post-category">
-                                    面试日记
+                            <a href="/categories/WebSocket/" class="post-category">
+                                    WebSocket
                                 </a>
                             
                             
@@ -852,8 +1057,8 @@ const server &#x3D; ws.createServer(connect &#x3D;&gt; &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95%E6%97%A5%E8%AE%B0/">
-                        <span class="chip bg-color">面试日记</span>
+                    <a href="/tags/WebSocket/">
+                        <span class="chip bg-color">WebSocket</span>
                     </a>
                     
                 </div>
